@@ -1,17 +1,21 @@
 import React from "react";
-import SearchBox from "../../components/MainComponents/SearchBox";
 import LayoutMain from "../../layout/layoutMain";
-function ArticlePage() {
+function Article() {
   return (
     <LayoutMain>
-      <div className="mt-[7rem] text-white space-y-10">
-        <SearchBox />
+      <div className="flex flex-col items-center justify-center mt-[7rem] text-white space-y-10">
+        <img
+          src={data[1].url}
+          alt={data[1].title}
+          className="w-[1000px] h-[500px] bg-no-repeat bg-cover"
+        />
+        <h1>{data[1].title}</h1>
       </div>
     </LayoutMain>
   );
 }
 
-export default ArticlePage;
+export default Article;
 const data = [
   {
     id: 1,

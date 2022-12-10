@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Hero from "../components/MainComponents/Hero";
-import Navbar from "../components/MainComponents/Navbar";
 import NextMatches from "../components/MainComponents/NextMatches";
 import LastArticles from "../components/MainComponents/LastArticles";
 import Players from "../components/MainComponents/Players";
 import About from "../components/MainComponents/About";
+import LayoutMain from "../layout/layoutMain";
 export default function Home() {
   const heroData = {
     id: "1",
@@ -119,7 +119,7 @@ export default function Home() {
       firstName: "Karim",
       lastName: "Benzema",
       image:
-        "https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobtable=MungoBlobs&blobwhere=1203430123845&ssbinary=true",
+        "https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/317364303_621971989715097_7767490931694701365_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=h-xkCSFmMsAAX8kd5UP&tn=dhFpMa3-q7LHns4_&_nc_ht=scontent.fias1-1.fna&oh=00_AfA1XWEpPKcVVOsL7WlKlrRiV8ptgA1SGiROLOcZEmaC1g&oe=639A542F",
       shirtNumber: 9,
       position: "Centru",
     },
@@ -160,18 +160,61 @@ export default function Home() {
       position: "Centru",
     },
   ];
+  const gallery = [
+    {
+      id: 1,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/10/image_galleries/767708/messi-in-direct-la-tv-catre-weghorst-zla-ce-te-uiti-prostule-interviul-in-care-leo-nu-a-iertat-pe-nimeni_size7.jfif",
+    },
+    {
+      id: 2,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/10/image_galleries/767702/rivalizeaza-cu-miss-croatia-argentiniencele-au-incins-atmosfera-la-meciul-cu-olanda_size12.jpg",
+    },
+    {
+      id: 3,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/10/image_galleries/767701/zmiss-croatia-i-a-ztaxat-pe-brazilieni-zsa-faceti-dansul-porumbelului-in-drum-spre-casa_15_size12.jpg",
+    },
+    {
+      id: 4,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/09/image_galleries/767585/ultima-ora-austria-tocmai-a-anuntat-cum-voteaza-astazi-fata-de-intrarea-romaniei-in-schengen_1_size12.jpg",
+    },
+    {
+      id: 5,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/09/image_galleries/674419/sunt-multifunctionala-florin-calinescu-i-a-dat-singur-4-de-da-formele-ei-si-miscarile-pe-care-le-a-facut-1_1_size12.jpg",
+    },
+    {
+      id: 6,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/09/image_galleries/767689/ce-a-postat-miss-croatia-dupa-ce-modric-co-au-eliminat-brazilia-la-penalty-uri_27_size7.jpg",
+    },
+    {
+      id: 7,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/09/image_galleries/767698/thiago-silva-si-a-luat-inima-in-dinti-si-a-spus-ce-avea-pe-suflet-dupa-eliminarea-de-la-cupa-mondiala_size12.jpg",
+    },
+    {
+      id: 8,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/09/image_galleries/767699/nervi-incinsi-in-olanda-argentina-virgil-van-dijk-si-a-zcalmat-adversarul-cu-un-procedeu-de-wrestling_4_1_size7.jpg",
+    },
+    {
+      id: 9,
+      image:
+        "https://res.sport.ro/assets/sport/2022/12/07/image_galleries/732985/la-40-de-ani-christina-aguilera-a-renuntat-la-haine-si-la-inhibitii-a-recreat-coperta-indrazneata-a-albumului_size12.jpg",
+    },
+  ];
+
   return (
     <div>
       <Head>
         <title>CSM Suceava</title>
       </Head>
-      <div className="bg-primary w-full overflow-hidden">
-        <div className="flex justify-center items-center">
-          <div className="xl:max-w-[1500px] w-full px-6 sm:px-14">
-            <Navbar />
-          </div>
-        </div>
-        <div className="flex justify-center items-center">
+      <LayoutMain>
+        <div className="flex justify-center items-center mt-10">
           <div className="w-full">
             <Hero data={heroData} />
           </div>
@@ -186,9 +229,9 @@ export default function Home() {
           <Players data={players} />
         </div>
         <div className="flex justify-center flex-col items-start">
-          <About />
+          <About data={gallery} />
         </div>
-      </div>
+      </LayoutMain>
     </div>
   );
 }

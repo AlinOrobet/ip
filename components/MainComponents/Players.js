@@ -49,16 +49,16 @@ function Players({data}) {
       <div className="text-center text-2xl font-bold">Jucatori</div>
       <div className="flex flex-row justify-center space-x-7 py-5 text-md font-semibold cursor-pointer">
         <p className="hover:scale-150 duration-300" onClick={() => handleFilterData("Ridicator")}>
-          Ridicatori
+          Ridicator
         </p>
         <p className="hover:scale-150 duration-300" onClick={() => handleFilterData("Centru")}>
-          Centrii
+          Centru
         </p>
         <p className="hover:scale-150 duration-300" onClick={() => handleFilterData("Extrema")}>
-          Extreme
+          Extrema
         </p>
         <p className="hover:scale-150 duration-300" onClick={() => handleFilterData("Fals")}>
-          Falsi
+          Universal
         </p>
         <p className="hover:scale-150 duration-300" onClick={() => handleFilterData("Libero")}>
           Libero

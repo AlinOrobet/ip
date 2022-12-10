@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
-function Navbar() {
+function Navbar({linkActive}) {
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
@@ -27,15 +27,10 @@ function Navbar() {
       style={{backgroundColor: `${color}`}}
       className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
     >
-      <div className="max-w-[1500px] m-auto flex justify-between items-center p-4 text-white">
-        <p style={{color: `${textColor}`}} className="md:hidden">
-          Logo?
-        </p>
+      <div className="m-auto flex justify-between items-center p-4 text-white">
         <Link href="/" className="flex items-center space-x-5">
-          <p style={{color: `${textColor}`}} className="hidden md:inline">
-            Logo?
-          </p>
-          <h1 className="font-bold text-xl md:text-4xl text-blue-800">
+          <img src="/logo_CSM.png" className="h-16 ml-3" />
+          <h1 className="font-bold text-4xl md:text-4xl text-blue-800">
             CSM{" "}
             <span style={{color: `${textColor}`}} className="italic">
               Suceava
