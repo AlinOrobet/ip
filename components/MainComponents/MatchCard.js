@@ -3,7 +3,7 @@ import React from "react";
 
 function MatchCard({data}) {
   return (
-    <div className="bg-gray-50 py-4 text-black">
+    <div className="bg-slate-100 flex flex-col rounded-lg shadow-sm hover:scale-105 hover:shadow-lg hover:bg-slate-200 transition-all duration-200 ease-out text-black">
       <div className="px-4 py-3 text-2xl font-bold">{data.date}</div>
       <div className="px-4 pb-3 text-xl font-semibold">{data.hour}</div>
       <div className="flex justify-around items-center p-5">

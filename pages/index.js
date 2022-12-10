@@ -4,6 +4,7 @@ import Navbar from "../components/MainComponents/Navbar";
 import NextMatches from "../components/MainComponents/NextMatches";
 import LastArticles from "../components/MainComponents/LastArticles";
 import Players from "../components/MainComponents/Players";
+import About from "../components/MainComponents/About";
 export default function Home() {
   const heroData = {
     id: "1",
@@ -23,6 +24,8 @@ export default function Home() {
       subtitle:
         "Echipa naţională a Franţei a învins duminică, scor 3-1, reprezentativa Poloniei, în optimile de finală ale Campionatului Mondial.",
       url: "https://res.sport.ro/assets/sport/2022/12/04/image_galleries/767276/le-roi-mbappe-starul-francez-a-marcat-doua-goluri-de-generic-si-a-depasit-un-record-detinut-de-pele-de_1_size6.jpg",
+      author: "GSP TV",
+      date: "23-12-2022",
     },
     {
       id: 2,
@@ -31,6 +34,8 @@ export default function Home() {
       subtitle:
         "Cody Gakpo (23 ani) a făcut spectacol în tricoul Olandei la Campionatul Mondial din Qatar.",
       url: "https://res.sport.ro/assets/sport/2022/12/04/image_galleries/767279/ea-este-bomba-sexy-care-se-iubeste-cu-starul-care-a-facut-senzatie-la-mondial-si-pe-care-se-bat-marile_7_1_size6.jpg",
+      author: "GSP TV",
+      date: "23-12-2022",
     },
     {
       id: 3,
@@ -38,13 +43,18 @@ export default function Home() {
       subtitle:
         "CFR Cluj a învins-o pe Chindia Târgovişte cu scorul de 2-0, pe teren propriu, într-un meci din etapa a 19-a a Superligii.",
       url: "https://res.sport.ro/assets/sport/2022/12/04/image_galleries/767274/dan-petrescu_size6.jpg",
+      author: "GSP TV",
+      date: "23-12-2022",
     },
     {
       id: 3,
       title:
         "Frumusețile Campionatului Mondial din Qatar! Imagini spectaculoase cu fanele care au făcut senzație în tribune ",
-      subtitle: "Campionatul Mondial se joacă între 20 noiembrie și 18 decembrie 2022. ",
+      subtitle:
+        "CFR Cluj a învins-o pe Chindia Târgovişte cu scorul de 2-0, pe teren propriu, într-un meci din etapa a 19-a a Superligii.",
       url: "https://res.sport.ro/assets/sport/2022/12/03/image_galleries/766304/frumusetile-campionatului-mondial-din-qatar-imagini-spectaculoase-cu-fanele-care-au-facut-senzatie-in_5_size6.jpg",
+      author: "GSP TV",
+      date: "23-12-2022",
     },
   ];
   const matches = [
@@ -103,6 +113,53 @@ export default function Home() {
       location: "San Mamés",
     },
   ];
+  const players = [
+    {
+      id: 1,
+      firstName: "Karim",
+      lastName: "Benzema",
+      image:
+        "https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobtable=MungoBlobs&blobwhere=1203430123845&ssbinary=true",
+      shirtNumber: 9,
+      position: "Centru",
+    },
+    {
+      id: 2,
+      firstName: "Vinicius",
+      lastName: "Jr.",
+      image:
+        "https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobtable=MungoBlobs&blobwhere=1203429560036&ssbinary=true",
+      shirtNumber: 20,
+      position: "Extrema",
+    },
+    {
+      id: 3,
+      firstName: "Eduardo ",
+      lastName: "Camavinga",
+      image:
+        "https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobtable=MungoBlobs&blobwhere=1203429560244&ssbinary=true",
+      shirtNumber: 12,
+      position: "Centru",
+    },
+    {
+      id: 4,
+      firstName: "Federico ",
+      lastName: "Valverde",
+      image:
+        "https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobtable=MungoBlobs&blobwhere=1203429559872&ssbinary=true",
+      shirtNumber: 15,
+      position: "Centru",
+    },
+    {
+      id: 5,
+      firstName: "Luka ",
+      lastName: "Modric",
+      image:
+        "https://www.realmadrid.com/cs/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobtable=MungoBlobs&blobwhere=1203429560394&ssbinary=true",
+      shirtNumber: 15,
+      position: "Centru",
+    },
+  ];
   return (
     <div>
       <Head>
@@ -114,15 +171,22 @@ export default function Home() {
             <Navbar />
           </div>
         </div>
-        <div className="bg-primary flex justify-center items-start">
-          <div className="xl:max-w-[1500px] w-full">
+        <div className="flex justify-center items-center">
+          <div className="w-full">
             <Hero data={heroData} />
           </div>
         </div>
         <div className="flex justify-center flex-col items-start">
           <LastArticles data={data} />
+        </div>
+        <div className="flex justify-center flex-col items-start">
           <NextMatches data={matches} />
-          <Players />
+        </div>
+        <div className="flex justify-center flex-col items-start">
+          <Players data={players} />
+        </div>
+        <div className="flex justify-center flex-col items-start">
+          <About />
         </div>
       </div>
     </div>
