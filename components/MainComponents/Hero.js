@@ -2,7 +2,7 @@ function Hero({data}) {
   return (
     <div>
       <div
-        className="relative overflow-hidden  bg-no-repeat bg-cover mt-20 h-[500px] md:h-[700px]"
+        className="relative overflow-hidden  bg-no-repeat bg-cover mt-16 h-[500px] md:h-[700px]"
         style={{
           backgroundImage: `url(${data.url})`,
         }}

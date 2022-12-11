@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/MainComponents/Navbar";
 import Footer from "../components/MainComponents/Footer";
+//bg-gradient-to-t from-white via-blue-500 to-blue-900
 function layoutMain({children}) {
   return (
     <div className="bg-primary w-full overflow-hidden ">
