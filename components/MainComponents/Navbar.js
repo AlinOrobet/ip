@@ -39,13 +39,13 @@ function Navbar({linkActive}) {
         </Link>
         <ul style={{color: `${textColor}`}} className="hidden md:flex">
           <li className="p-2 lg:p-4">
-            <Link href="#articles">Articole</Link>
+            <Link href="/articles">Articole</Link>
           </li>
           <li className="p-2 lg:p-4">
-            <Link href="#matches">Meciuri</Link>
+            <Link href="/schedule">Meciuri</Link>
           </li>
           <li className="p-2 lg:p-4">
-            <Link href="#players">Jucatori</Link>
+            <Link href="/players">Jucatori</Link>
           </li>
           <li className="p-2 lg:p-4">
             <Link href="#about">Despre noi</Link>

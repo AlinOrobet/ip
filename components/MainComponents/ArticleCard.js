@@ -2,9 +2,10 @@ import React from "react";
 import Link from "next/link";
 function ArticleCard({data}) {
   const handleClick = () => {};
+  //h-[450px] md:h-[500px] lg:h-[650px] xl:h-[550px]
   return (
-    <Link href={`/article/${data.id}`}>
-      <article className="bg-slate-100 flex flex-col rounded-lg shadow-sm hover:scale-105 hover:shadow-lg hover:bg-slate-200 transition-all duration-200 ease-out text-black  h-[450px] lg:h-[650px] xl:h-[550px]">
+    <Link href={`/articles/${data.id}`}>
+      <article className="bg-slate-100 flex flex-col rounded-lg shadow-sm hover:scale-105 hover:bg-slate-200 transition-all duration-200 ease-out text-black sm:h-[550px] lg:h-[600px]">
         <img
           src={data.url}
           alt={data.title}
@@ -24,7 +25,7 @@ function ArticleCard({data}) {
           {/* READ MORE BUTTON */}
           <button
             onClick={handleClick}
-            className="bg-orange-400 h-[30px] rounded-b-lg hover:bg-orange-500 font-bold"
+            className="bg-orange-400 h-[40px] rounded-b-lg hover:bg-orange-500 font-bold"
           >
             Citeste mai mult
           </button>

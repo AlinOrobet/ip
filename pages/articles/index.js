@@ -1,21 +1,25 @@
 import React from "react";
+import SearchBox from "../../components/MainComponents/SearchBox";
+import ArticleCard from "../../components/MainComponents/ArticleCard";
 import LayoutMain from "../../layout/layoutMain";
-function Article() {
+function ArticlePage() {
   return (
     <LayoutMain>
-      <div className="flex flex-col items-center justify-center mt-[7rem] text-white space-y-10">
-        <img
-          src={data[1].url}
-          alt={data[1].title}
-          className="w-[1000px] h-[500px] bg-no-repeat bg-cover"
-        />
-        <h1>{data[1].title}</h1>
+      <div className="mt-[7rem] text-white space-y-10">
+        <SearchBox />
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {data.map((item) => (
+              <ArticleCard key={item.id} data={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </LayoutMain>
   );
 }
 
-export default Article;
+export default ArticlePage;
 const data = [
   {
     id: 1,

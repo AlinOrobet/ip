@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import MatchCard from "./MatchCard";
-
+import {useRouter} from "next/router";
 function NextMatches({data}) {
   const [nrOfMatchesAtResize, setNrOfMatchesAtResize] = useState(1);
+  const router = useRouter();
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 767) {
@@ -19,7 +20,10 @@ function NextMatches({data}) {
   return (
     <div id="matches" className="text-white px-6 mx-auto my-10">
       <div className="text-center text-2xl font-bold">Urmatoarele Meciuri</div>
-      <div className="hidden lg:flex justify-end -mt-[20px] text-md font-semibold italic">
+      <div
+        className="hidden lg:flex justify-end -mt-[20px] text-md font-semibold italic cursor-pointer hover:text-gray-300"
+        onClick={() => router.push("/schedule")}
+      >
         Vezi tot calendarul
       </div>
 
