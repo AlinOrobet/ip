@@ -1,34 +1,42 @@
 import Link from "next/link";
 import React, {useEffect, useState} from "react";
+import NavLinks from "./NavLinks";
 import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 function Navbar({linkActive}) {
-  const [nav, setNav] = useState(false);
-  const [color, setColor] = useState("transparent");
+  const [open, setOpen] = useState(false);
+  const [color, setColor] = useState("#00040f");
   const [textColor, setTextColor] = useState("white");
   const handleNav = () => {
-    setNav(!nav);
+    setOpen(!open);
   };
 
   useEffect(() => {
     const changeColor = () => {
       if (window.scrollY >= 90) {
         setColor("#ffffff");
-        setTextColor("#000000");
+        setTextColor("#00040f");
       } else {
-        setColor("transparent");
+        setColor("#00040f");
         setTextColor("white");
       }
     };
     window.addEventListener("scroll", changeColor);
   }, []);
-
+  const optionsForAbout = [
+    {id: 1, title: "Prima Echipa"},
+    {id: 2, title: "Juniori"},
+    {id: 3, title: "Cadeti"},
+    {id: 4, title: "Sperante"},
+    {id: 5, title: "Mini Volei"},
+    {id: 6, title: "Staff"},
+  ];
   return (
     <div
       style={{backgroundColor: `${color}`}}
       className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
     >
       <div className="m-auto flex justify-between items-center p-4 text-white">
-        <Link href="/" className="flex items-center space-x-5">
+        <Link href="/" className="flex items-center space-x-5 z-50 lg:w-auto w-full">
           <img src="/logo_CSM.png" className="h-16 ml-3" />
           <h1 className="font-bold text-4xl md:text-4xl text-blue-800">
             CSM{" "}
@@ -37,55 +45,31 @@ function Navbar({linkActive}) {
             </span>
           </h1>
         </Link>
-        <ul style={{color: `${textColor}`}} className="hidden md:flex">
-          <li className="p-2 lg:p-4">
-            <Link href="/articles">Articole</Link>
-          </li>
-          <li className="p-2 lg:p-4">
-            <Link href="/schedule">Meciuri</Link>
-          </li>
-          <li className="p-2 lg:p-4">
-            <Link href="/players">Jucatori</Link>
-          </li>
-          <li className="p-2 lg:p-4">
-            <Link href="#about">Despre noi</Link>
-          </li>
-          <li className="p-2 lg:p-4">
-            <Link href="#contact">Contact</Link>
-          </li>
+        <ul
+          style={{color: `${textColor}`}}
+          className="hidden lg:flex uppercase uppercase items-center gap-8"
+        >
+          <NavLinks color={color} textColor={textColor} />
         </ul>
         {/* Mobile Button */}
-        <div onClick={handleNav} className={`block md:hidden z-10`}>
-          {nav ? (
-            <AiOutlineClose size={20} className="text-white" />
+        <div onClick={handleNav} className={`block lg:hidden z-10`}>
+          {open ? (
+            <AiOutlineClose size={30} style={{color: `${textColor}`}} />
           ) : (
-            <AiOutlineMenu size={20} style={{color: `${textColor}`}} />
+            <AiOutlineMenu size={30} style={{color: `${textColor}`}} />
           )}
         </div>
         {/* Mobile Menu */}
         <div
+          style={{backgroundColor: `${color}`, color: `${textColor}`}}
           className={
-            nav
-              ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-500"
-              : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-500"
+            open
+              ? "lg:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black ease-in duration-500 py-24 pl-4"
+              : "lg:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black ease-in duration-500 py-24 pl-4"
           }
         >
           <ul>
-            <li className="text-white p-4 text-4xl hover:text-gray-500">
-              <Link href="/">Home</Link>
-            </li>
-            <li className="text-white p-4 text-4xl hover:text-gray-500">
-              <Link href="/">Articole</Link>
-            </li>
-            <li className="text-white p-4 text-4xl hover:text-gray-500">
-              <Link href="/">Jucatori</Link>
-            </li>
-            <li className="text-white p-4 text-4xl hover:text-gray-500">
-              <Link href="/">Despre noi</Link>
-            </li>
-            <li className="text-white p-4 text-4xl hover:text-gray-500">
-              <Link href="/">Contact</Link>
-            </li>
+            <NavLinks color={color} textColor={textColor} />
           </ul>
         </div>
       </div>

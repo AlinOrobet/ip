@@ -214,7 +214,7 @@ export default function Home() {
         <title>CSM Suceava</title>
       </Head>
       <LayoutMain>
-        <div className="flex justify-center items-center mt-10">
+        <div className="flex justify-center items-center mt-24 lg:mt-28">
           <div className="w-full">
             <Hero data={heroData} />
           </div>

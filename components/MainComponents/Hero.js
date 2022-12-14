@@ -2,7 +2,7 @@ function Hero({data}) {
   return (
     <div>
       <div
-        className="relative overflow-hidden  bg-no-repeat bg-cover mt-16 h-[500px] md:h-[700px]"
+        className="relative overflow-hidden  bg-no-repeat bg-cover h-[500px] md:h-[700px]"
         style={{
           backgroundImage: `url(${data.url})`,
         }}
@@ -13,7 +13,7 @@ function Hero({data}) {
         >
           <div className="flex justify-center items-center h-full mt-20 md:mt-40">
             <div className="text-center text-white px-6 md:px-12">
-              <h1 className="text-2xl lg:text-5xl font-bold tracking-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
                 {data.title}
                 <div className="flex items-center justify-center my-4 ">
                   <img src={data.emblema1} className="w-24" />
@@ -31,8 +31,8 @@ function Hero({data}) {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center text-white mt-10 divide-x-2 space-x-5">
-        <h1 className="uppercase font-semibold text-md">Sponsori principali</h1>
+      <div className="flex flex-col md:flex-row items-center justify-center text-white mt-10 md:divide-x-2 space-x-5">
+        <h1 className="uppercase font-semibold text-lg">Sponsori principali</h1>
         <div className="flex space-x-5 pl-5">
           <div className="hover:bg-red-300">LOGO SPONSOR 1</div>
           <div className="hover:bg-red-300">LOGO SPONSOR 2</div>

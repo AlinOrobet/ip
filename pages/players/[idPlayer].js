@@ -44,7 +44,7 @@ function Jucator() {
           <div className="mx-auto">
             <img
               className="h-[350px] md:h-[450px] lg:h-[600px] bg-no-repeat"
-              src="https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/317364303_621971989715097_7767490931694701365_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=h-xkCSFmMsAAX8kd5UP&tn=dhFpMa3-q7LHns4_&_nc_ht=scontent.fias1-1.fna&oh=00_AfA1XWEpPKcVVOsL7WlKlrRiV8ptgA1SGiROLOcZEmaC1g&oe=639A542F"
+              src="https://www.fcbarcelona.com/photo-resources/2022/11/02/a82e5b51-cf1d-48ca-872f-753ab665386a/mini_22-RAPHINHA.png?width=670&height=790"
             />
             <div className="hidden md:flex relative w-full backdrop-blur-sm h-[90px] -mt-20">
               <div className="flex flex-col mx-auto">

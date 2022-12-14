@@ -45,7 +45,7 @@ function Players({data}) {
     setFourthIndex((count + 3) % filteredData.length);
   };
   return (
-    <div id="players" className="text-white px-6 mx-auto my-10">
+    <div id="players" className="text-white px-6 mx-auto">
       <div className="text-center text-2xl font-bold">Jucatori</div>
       <div className="flex flex-row justify-center space-x-7 py-5 text-md font-semibold cursor-pointer">
         <p className="hover:scale-150 duration-300" onClick={() => handleFilterData("Ridicator")}>
