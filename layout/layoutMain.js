@@ -11,7 +11,7 @@ function layoutMain({children}) {
         </div>
       </div>
       {children}
-      <footer className="">
+      <footer className="mt-20">
         <Footer />
       </footer>
     </div>

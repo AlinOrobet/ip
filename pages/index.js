@@ -118,8 +118,7 @@ export default function Home() {
       id: 1,
       firstName: "Karim",
       lastName: "Benzema",
-      image:
-        "https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/317364303_621971989715097_7767490931694701365_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=h-xkCSFmMsAAX8kd5UP&tn=dhFpMa3-q7LHns4_&_nc_ht=scontent.fias1-1.fna&oh=00_AfA1XWEpPKcVVOsL7WlKlrRiV8ptgA1SGiROLOcZEmaC1g&oe=639A542F",
+      image: "../public/assets/player_15.png",
       shirtNumber: 9,
       position: "Centru",
     },

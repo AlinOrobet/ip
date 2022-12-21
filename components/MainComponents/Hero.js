@@ -33,9 +33,9 @@ function Hero({data}) {
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center text-white mt-10 md:divide-x-2 space-x-5">
         <h1 className="uppercase font-semibold text-lg">Sponsori principali</h1>
-        <div className="flex space-x-5 pl-5">
-          <div className="hover:bg-red-300">LOGO SPONSOR 1</div>
-          <div className="hover:bg-red-300">LOGO SPONSOR 2</div>
+        <div className="flex items-center space-x-5 pl-5">
+          <img src="/assets/bazzil_logo.png" alt="" className="w-36" />
+          <img src="/assets/celestin_logo.png" alt="" className="w-36" />
         </div>
       </div>
     </div>

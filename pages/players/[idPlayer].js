@@ -1,6 +1,6 @@
 import React from "react";
 import LayoutMain from "../../layout/layoutMain";
-function Jucator() {
+function Jucator({player}) {
   return (
     <LayoutMain>
       <div className="mt-24 text-white relative overflow-hidden bg-no-repeat bg-cover bg-center">
@@ -45,6 +45,7 @@ function Jucator() {
             <img
               className="h-[350px] md:h-[450px] lg:h-[600px] bg-no-repeat"
               src="https://www.fcbarcelona.com/photo-resources/2022/11/02/a82e5b51-cf1d-48ca-872f-753ab665386a/mini_22-RAPHINHA.png?width=670&height=790"
+              //src={`data:image/jpeg;base64,${player.photo}`}
             />
             <div className="hidden md:flex relative w-full backdrop-blur-sm h-[90px] -mt-20">
               <div className="flex flex-col mx-auto">
@@ -140,3 +141,13 @@ function Jucator() {
 }
 
 export default Jucator;
+// export async function getServerSideProps(context) {
+//   const {params} = context;
+//   const responsePlayer = await fetch(`http://localhost:8081/api/player/${params.idPlayer}`);
+//   const player = await responsePlayer.json();
+//   return {
+//     props: {
+//       player,
+//     },
+//   };
+// }

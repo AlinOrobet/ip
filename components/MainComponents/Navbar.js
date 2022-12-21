@@ -22,14 +22,6 @@ function Navbar({linkActive}) {
     };
     window.addEventListener("scroll", changeColor);
   }, []);
-  const optionsForAbout = [
-    {id: 1, title: "Prima Echipa"},
-    {id: 2, title: "Juniori"},
-    {id: 3, title: "Cadeti"},
-    {id: 4, title: "Sperante"},
-    {id: 5, title: "Mini Volei"},
-    {id: 6, title: "Staff"},
-  ];
   return (
     <div
       style={{backgroundColor: `${color}`}}

@@ -16,9 +16,9 @@ function Players({data}) {
         setNrOfPlayersAtResize(1);
       } else if (window.innerWidth > 767 && window.innerWidth < 1035) {
         setNrOfPlayersAtResize(2);
-      } else if (window.innerWidth > 1035 && window.innerWidth < 1440) {
+      } else if (window.innerWidth > 1035 && window.innerWidth < 1332) {
         setNrOfPlayersAtResize(3);
-      } else {
+      } else if (window.innerWidth > 1332) {
         setNrOfPlayersAtResize(4);
       }
     };

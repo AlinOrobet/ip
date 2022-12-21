@@ -27,7 +27,7 @@ function NextMatches({data}) {
         Vezi tot calendarul
       </div>
 
-      <div className="flex items-center mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex items-center mt-10 gap-6">
         {data.slice(0, nrOfMatchesAtResize).map((item) => (
           <MatchCard key={item.id} data={item} />
         ))}

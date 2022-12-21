@@ -23,7 +23,7 @@ function LastArticles({data}) {
     const handleResize = () => {
       if (window.innerWidth < 767) {
         setNrOfCardsAtResize(1);
-      } else if (window.innerWidth > 767 && window.innerWidth < 1035) {
+      } else if (window.innerWidth < 1035) {
         setNrOfCardsAtResize(2);
       } else {
         setNrOfCardsAtResize(3);
@@ -35,16 +35,30 @@ function LastArticles({data}) {
   return (
     <div id="articles" className="text-white px-6 sm:px-14 ">
       <div className="text-white text-center text-xl font-bold mt-10">News</div>
-      <div className="flex space-x-2">
-        <button onClick={handleOnPrevClick} className="hidden lg:inline">
+      <div className="flex space-x-2 mt-5">
+        <button
+          onClick={handleOnPrevClick}
+          className={`${data.length >= nrOfCardsAtResize ? "" : "hidden"}`}
+        >
           <GrFormPreviousLink className="bg-white rounded-full items-center" size={30} />
         </button>
-        <div className="flex items-center grid grid-cols-1 lg:grid-cols-3 p-10 gap-10">
-          <ArticleCard data={data[firstIndex]} />
-          <ArticleCard data={data[secoundIndex]} />
-          <ArticleCard data={data[thirdIndex]} />
+        <div className="flex items-center gap-5 p-1 mx-auto">
+          {data?.slice(0, 1).map((item) => (
+            <ArticleCard key={item.id} data={data[firstIndex]} />
+          ))}
+          {data.length >= nrOfCardsAtResize &&
+            nrOfCardsAtResize > 1 &&
+            data
+              ?.slice(0, 1)
+              .map((item) => <ArticleCard key={item.id} data={data[secoundIndex]} />)}
+          {data.length >= nrOfCardsAtResize &&
+            nrOfCardsAtResize > 2 &&
+            data?.slice(0, 1).map((item) => <ArticleCard key={item.id} data={data[thirdIndex]} />)}
         </div>
-        <button onClick={handleOnNextClick} className="hidden lg:inline">
+        <button
+          onClick={handleOnNextClick}
+          className={`${data.length >= nrOfCardsAtResize ? "" : "hidden"}`}
+        >
           <GrFormPreviousLink className="bg-white rounded-full rotate-180 items-center" size={30} />
         </button>
       </div>
