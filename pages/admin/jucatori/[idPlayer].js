@@ -30,6 +30,7 @@ function Player({ player }) {
     //TODO:
     let data = new FormData();
     let imagedata = document.querySelector('input[type="file"]').files[0];
+    console.log(values.firstName);
     data.append(
       "player",
       new Blob(
@@ -55,7 +56,7 @@ function Player({ player }) {
 
     await fetch("http://localhost:8080/api/player/update", {
       mode: "no-cors",
-      method: "PUT",
+      method: "POST",
 
       body: data,
     }).then((res) => res.json());
@@ -181,13 +182,7 @@ function Player({ player }) {
                     drag and drop
                   </p>
                 </div>
-                <input
-                  type="file"
-                  className="hidden"
-                  onChange={(event) => {
-                    setPhoto(event);
-                  }}
-                />
+                <input type="file" className="hidden" />
               </label>
             </div>
           </div>
