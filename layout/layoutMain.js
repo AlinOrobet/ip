@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Navbar from "../components/MainComponents/Navbar";
 import Footer from "../components/MainComponents/Footer";
-function LayoutMain({ children, setCategory }) {
+function LayoutMain({children, setCategory}) {
   const [email, setEmail] = useState("");
   async function onSubmit() {
     await fetch(`http://localhost:8080/api/subscriber/add/?email=${email}`, {
@@ -20,8 +20,8 @@ function LayoutMain({ children, setCategory }) {
       <div className="px-10 pb-5 flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold">We are launching soon 🚀</h1>
         <h2 className="text-md lg:text-xl text-center font-semibold">
-          We&apos;re creating something awesome. Please subscribe to get
-          notified when it&apos;s ready!
+          We&apos;re creating something awesome. Please subscribe to get notified when it&apos;s
+          ready!
         </h2>
         <div className="space-x-3 mt-5">
           <input
@@ -39,6 +39,7 @@ function LayoutMain({ children, setCategory }) {
           >
             Subscribe
           </button>
+          <div>Schimbare</div>
         </div>
       </div>
       <Footer />
