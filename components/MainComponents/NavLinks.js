@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {IoMdArrowDropdown} from "react-icons/io";
 import Link from "next/link";
-function NavLinks({color, textColor}) {
+function NavLinks({color, textColor, setCategory}) {
   const links = [
     {id: 1, name: "Articole", link: "articles"},
     {id: 2, name: "Jucatori", link: "players"},
@@ -38,6 +38,9 @@ function NavLinks({color, textColor}) {
     if (link_name === "Despre Noi") {
       setOpen(!open);
     }
+  };
+  const handleChangeCategory = (type) => {
+    setCategory(type);
   };
   return (
     <>
@@ -76,12 +79,20 @@ function NavLinks({color, textColor}) {
           </div>
           {linkAboutUs.submenu && (
             <div className="">
-              <div className={`absolute top-20 ${heading === "Despre Noi" ? "block" : "hidden"}`}>
+              <div
+                className={`absolute top-20 ${
+                  heading === "Despre Noi" ? "hidden lg:inline" : "hidden"
+                }`}
+              >
                 <div style={{backgroundColor: `${color}`}} className="p-3.5 rounded-md">
                   {linkAboutUs.sublinks?.map((sublinks) => (
                     <div key={sublinks.id}>
                       <li className="my-2.5">
-                        <Link className="hover:font-bold" href="">
+                        <Link
+                          className="hover:font-bold"
+                          href={sublinks.link}
+                          onClick={() => handleChangeCategory(sublinks.name)}
+                        >
                           {sublinks.name}
                         </Link>
                       </li>
@@ -90,7 +101,7 @@ function NavLinks({color, textColor}) {
                 </div>
               </div>
               {/* MOBILE */}
-              <div className={`${heading === linkAboutUs.name ? "lg:hidden" : "hidden"}`}>
+              <div className={`${heading === "Despre Noi" ? "inline lg:hidden" : "hidden"}`}>
                 {linkAboutUs.sublinks?.map((sublinks) => (
                   <div key={sublinks.id}>
                     <li className="my-3 pl-10">

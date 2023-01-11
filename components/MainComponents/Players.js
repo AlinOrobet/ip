@@ -25,7 +25,6 @@ function Players({data}) {
     window.addEventListener("resize", handleResize);
     handleResize();
   }, []);
-  console.log(filteredData.length + " " + nrOfPlayersAtResize);
   const [firstIndex, setFirstIndex] = useState(0);
   const [secoundIndex, setSecoundIndex] = useState(firstIndex + 1);
   const [thirdIndex, setThirdIndex] = useState(secoundIndex + 1);

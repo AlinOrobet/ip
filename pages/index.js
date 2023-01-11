@@ -1,22 +1,23 @@
 import Head from "next/head";
-import Hero from "../components/MainComponents/Hero";
-import NextMatches from "../components/MainComponents/NextMatches";
-import LastArticles from "../components/MainComponents/LastArticles";
-import Players from "../components/MainComponents/Players";
-import About from "../components/MainComponents/About";
-import LayoutMain from "../layout/layoutMain";
-export default function Home() {
-  const heroData = {
+import Home from "../components/MainComponents/Home";
+import {useState, useEffect} from "react";
+export default function HomePage() {
+  //2022-11-30
+  const heroDataFT = {
     id: "1",
-    emblema1:
+    category: "First Team",
+    logo_1:
       "https://www.realmadrid.com/StaticFiles/RealMadrid/directo/statics/primera/Rm_mediano.png",
-    emblema2:
+    team_1: "Real Madrid",
+    logo_2:
       "https://www.realmadrid.com/StaticFiles/RealMadrid/directo/statics/baloncesto/acb/ValenciaBasket_mediano.png",
+    team_2: "Valencia",
     scor: "3-0",
     title: "Vai steaua noastra",
-    url: "https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/318299692_208334444962355_8426351539250393295_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=XKPWYCDvb6QAX-aoLw1&tn=dhFpMa3-q7LHns4_&_nc_ht=scontent.fias1-1.fna&oh=00_AfCDFBZToWSTVHBHpqMTvcyJskqaMjElqA7pEwkraCRacg&oe=6391AE7E",
+    image:
+      "https://scontent.fias1-1.fna.fbcdn.net/v/t39.30808-6/318299692_208334444962355_8426351539250393295_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=XKPWYCDvb6QAX-aoLw1&tn=dhFpMa3-q7LHns4_&_nc_ht=scontent.fias1-1.fna&oh=00_AfCDFBZToWSTVHBHpqMTvcyJskqaMjElqA7pEwkraCRacg&oe=6391AE7E",
   };
-  const data = [
+  const articlesDataFT = [
     {
       id: 1,
       title:
@@ -57,7 +58,7 @@ export default function Home() {
       date: "23-12-2022",
     },
   ];
-  const matches = [
+  const matchesDataFT = [
     {
       id: 1,
       team_1: "Real Valladolid",
@@ -113,12 +114,12 @@ export default function Home() {
       location: "San Mamés",
     },
   ];
-  const players = [
+  const playersDataFT = [
     {
       id: 1,
       firstName: "Karim",
       lastName: "Benzema",
-      image: "../public/assets/player_15.png",
+      image: "/assets/player_15.png",
       shirtNumber: 9,
       position: "Centru",
     },
@@ -159,7 +160,7 @@ export default function Home() {
       position: "Centru",
     },
   ];
-  const gallery = [
+  const galleryDataFT = [
     {
       id: 1,
       image:
@@ -206,31 +207,37 @@ export default function Home() {
         "https://res.sport.ro/assets/sport/2022/12/07/image_galleries/732985/la-40-de-ani-christina-aguilera-a-renuntat-la-haine-si-la-inhibitii-a-recreat-coperta-indrazneata-a-albumului_size12.jpg",
     },
   ];
-
+  let heroData = heroDataFT,
+    articlesData = articlesDataFT,
+    matchesData = matchesDataFT,
+    playersData = playersDataFT,
+    galleryData = galleryDataFT;
+  const [category, setCategory] = useState("First Team");
+  useEffect(() => {
+    const setData = () => {
+      if (category === "Juniori") {
+      } else if (category === "Cadeti") {
+      } else if (category === "Sperante") {
+      } else if (category === "Mini volei") {
+      }
+    };
+    setData();
+  }, [category]);
   return (
     <div>
       <Head>
         <title>CSM Suceava</title>
       </Head>
-      <LayoutMain>
-        <div className="flex justify-center items-center mt-24 lg:mt-28">
-          <div className="w-full">
-            <Hero data={heroData} />
-          </div>
-        </div>
-        <div className="flex justify-center flex-col items-start">
-          <LastArticles data={data} />
-        </div>
-        <div className="flex justify-center flex-col items-start">
-          <NextMatches data={matches} />
-        </div>
-        <div className="flex justify-center flex-col items-start">
-          <Players data={players} />
-        </div>
-        <div className="flex justify-center flex-col items-start">
-          <About data={gallery} />
-        </div>
-      </LayoutMain>
+      <div>
+        <Home
+          heroData={heroData}
+          articlesData={articlesData}
+          matchesData={matchesData}
+          playersData={playersData}
+          galleryData={galleryData}
+          setCategory={setCategory}
+        />
+      </div>
     </div>
   );
 }

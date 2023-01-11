@@ -93,67 +93,6 @@ function Edit() {
               {...formik.getFieldProps("firstName")}
             />
           </div>
-          {/* ROLE */}
-          <div className="pt-4 px-2">
-            <div className="flex items-center">
-              <label htmlFor="role" className={styles.input_label}>
-                Functie
-              </label>
-              <div
-                className={`${
-                  formik.errors.role && formik.touched.role ? "inline" : "hidden"
-                } flex items-center group`}
-              >
-                <span className={``}>
-                  <AiOutlineQuestionCircle />
-                </span>
-                <p className="text-red-500 pl-2 invisible group-hover:visible">
-                  {formik.errors.role}
-                </p>
-              </div>
-            </div>
-            <select
-              id="role"
-              className={`${styles.input_text} ${
-                formik.errors.role && formik.touched.role ? "border-rose-600" : ""
-              }`}
-              {...formik.getFieldProps("role")}
-            >
-              <option>Alege Rolul</option>
-              {roles.map((item) => (
-                <option key={item.id} value={item.value}>
-                  {item.title}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* DOB */}
-          <div className="pt-4 px-2">
-            <div className="flex items-center">
-              <label htmlFor="dob" className={styles.input_label}>
-                Data Nastere
-              </label>
-              <div
-                className={`${
-                  formik.errors.dob && formik.touched.dob ? "inline" : "hidden"
-                } flex items-center group`}
-              >
-                <span className={``}>
-                  <AiOutlineQuestionCircle />
-                </span>
-                <p className="text-red-500 pl-2 invisible group-hover:visible">
-                  {formik.errors.dob}
-                </p>
-              </div>
-            </div>
-            <input
-              type="date"
-              className={`${styles.input_text} ${
-                formik.errors.dob && formik.touched.dob ? "border-rose-600" : ""
-              }`}
-              {...formik.getFieldProps("dob")}
-            />
-          </div>
           {/* IMAGE */}
           <div className="pt-4 px-2">
             <div className="flex items-center">
@@ -202,6 +141,61 @@ function Edit() {
                 />
               </label>
             </div>
+          </div>
+          {/* DOB */}
+          <div className="pt-4 px-2">
+            <div className="flex items-center">
+              <label htmlFor="dob" className={styles.input_label}>
+                Data Nastere
+              </label>
+              <div
+                className={`${
+                  formik.errors.dob && formik.touched.dob ? "inline" : "hidden"
+                } flex items-center group`}
+              >
+                <span className={``}>
+                  <AiOutlineQuestionCircle />
+                </span>
+                <p className="text-red-500 pl-2 invisible group-hover:visible">
+                  {formik.errors.dob}
+                </p>
+              </div>
+            </div>
+            <input
+              type="date"
+              className={`${styles.input_text} ${
+                formik.errors.dob && formik.touched.dob ? "border-rose-600" : ""
+              }`}
+              {...formik.getFieldProps("dob")}
+            />
+          </div>
+          {/* ROLE */}
+          <div className="pt-4 px-2">
+            <div className="flex items-center">
+              <label htmlFor="role" className={styles.input_label}>
+                Functie
+              </label>
+              <div
+                className={`${
+                  formik.errors.role && formik.touched.role ? "inline" : "hidden"
+                } flex items-center group`}
+              >
+                <span className={``}>
+                  <AiOutlineQuestionCircle />
+                </span>
+                <p className="text-red-500 pl-2 invisible group-hover:visible">
+                  {formik.errors.role}
+                </p>
+              </div>
+            </div>
+            <input
+              id="role"
+              type="text"
+              className={`${styles.input_text} ${
+                formik.errors.role && formik.touched.role ? "border-rose-600" : ""
+              }`}
+              {...formik.getFieldProps("role")}
+            />
           </div>
         </div>
         <div className="border-t px-2 py-3">

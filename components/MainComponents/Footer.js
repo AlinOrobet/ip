@@ -2,13 +2,13 @@ import React from "react";
 import {BsFacebook, BsInstagram} from "react-icons/bs";
 function Footer() {
   return (
-    <div className="p-4 sm:p-6 text-white mx-auto">
+    <div className="p-4 sm:p-6 text-blue-600 mx-auto">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <a href="#" className="flex items-center">
             <img src="/logo_CSM.png" className="mr-3 h-10" alt="CSM SUCEAVA LOGO" />
             <h1 className="self-center text-2xl font-semibold whitespace-nowrap text-blue-600">
-              CSM <span className="text-white italic">Suceava</span>
+              CSM <span className="">Suceava</span>
             </h1>
           </a>
           <div className="mt-10 flex space-x-10">
@@ -93,10 +93,10 @@ function Footer() {
           . All Rights Reserved.
         </span>
         <div className="mr-10 flex space-x-6 sm:justify-center sm:mt-0">
-          <a href="#" className="text-gray-500 hover:text-white ">
+          <a href="#" className="text-gray-500 hover:text-blue-500 ">
             <BsFacebook size={24} />
           </a>
-          <a href="#" className="text-gray-500 hover:text-white ">
+          <a href="#" className="text-gray-500 hover:text-blue-500">
             <BsInstagram size={24} />
           </a>
         </div>

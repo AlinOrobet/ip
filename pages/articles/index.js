@@ -1,18 +1,26 @@
-import React from "react";
-import SearchBox from "../../components/MainComponents/SearchBox";
+import React, {useState, useEffect} from "react";
 import ArticleCard from "../../components/MainComponents/ArticleCard";
 import LayoutMain from "../../layout/layoutMain";
+import Hero from "../../components/MainComponents/Hero";
 function ArticlePage() {
+  const [posts, setPosts] = useState([]);
+
   return (
     <LayoutMain>
-      <div className="mt-[7rem] text-white space-y-10">
-        <SearchBox />
-        <div className="max-w-7xl mx-auto px-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {data.map((item) => (
-              <ArticleCard key={item.id} data={item} />
+      <div className="text-white space-y-10">
+        <Hero data={articles[0]} />
+      </div>
+      <div className="my-10 bg-white rounded-t-2xl container mx-auto mb-8">
+        <h1 className="p-4 text-3xl font-bold uppercase">Ultimele articole despre "CATEGORIE" </h1>
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-5">
+            {articles.slice().map((item) => (
+              <div key={item.id} className="flex items-center justify-center">
+                <ArticleCard data={item} />
+              </div>
             ))}
           </div>
+          PAGINARE
         </div>
       </div>
     </LayoutMain>
@@ -20,7 +28,7 @@ function ArticlePage() {
 }
 
 export default ArticlePage;
-const data = [
+const articles = [
   {
     id: 1,
     title:
@@ -53,7 +61,7 @@ const data = [
     date: "23-12-2022",
   },
   {
-    id: 3,
+    id: 4,
     title:
       "Frumusețile Campionatului Mondial din Qatar! Imagini spectaculoase cu fanele care au făcut senzație în tribune ",
     subtitle:
@@ -63,3 +71,12 @@ const data = [
     date: "23-12-2022",
   },
 ];
+{
+  /* <div className="max-w-7xl mx-auto px-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {data.map((item) => (
+              <ArticleCard key={item.id} data={item} />
+            ))}
+          </div>
+        </div> */
+}

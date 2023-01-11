@@ -61,7 +61,7 @@ function Player() {
     <LayoutEditAdmin title={title}>
       <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
         <Content title={title} styled={"italic"} iconRight={true} link="jucatori" />
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto mb-5">
           {/* LAST NAME */}
           <div className="pt-4 px-2">
             <div className="flex items-center">
@@ -169,33 +169,33 @@ function Player() {
               </label>
             </div>
           </div>
-          {/* HEIGHT */}
+          {/* CATEGORY */}
           <div className="pt-4 px-2">
             <div className="flex items-center">
-              <label htmlFor="height" className={styles.input_label}>
-                Inaltime
+              <label htmlFor="category" className={styles.input_label}>
+                Categorie
               </label>
               <div
                 className={`${
-                  formik.errors.height && formik.touched.height ? "inline" : "hidden"
+                  formik.errors.category && formik.touched.category ? "inline" : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
                   <AiOutlineQuestionCircle />
                 </span>
                 <p className="text-red-500 pl-2 invisible group-hover:visible">
-                  {formik.errors.height}
+                  {formik.errors.category}
                 </p>
               </div>
             </div>
             <input
+              id="category"
               type="text"
-              id="height"
               className={`${styles.input_text} ${
-                formik.errors.height && formik.touched.height ? "border-rose-600" : ""
+                formik.errors.category && formik.touched.category ? "border-rose-600" : ""
               }`}
-              value={formik.getFieldProps("height")}
-              {...formik.getFieldProps("height")}
+              value={formik.getFieldProps("category")}
+              {...formik.getFieldProps("category")}
             />
           </div>
           {/* DOB */}
@@ -255,35 +255,7 @@ function Player() {
               {...formik.getFieldProps("shirtNumber")}
             />
           </div>
-          {/* CATEGORY */}
-          <div className="pt-4 px-2">
-            <div className="flex items-center">
-              <label htmlFor="category" className={styles.input_label}>
-                Categorie
-              </label>
-              <div
-                className={`${
-                  formik.errors.category && formik.touched.category ? "inline" : "hidden"
-                } flex items-center group`}
-              >
-                <span className={``}>
-                  <AiOutlineQuestionCircle />
-                </span>
-                <p className="text-red-500 pl-2 invisible group-hover:visible">
-                  {formik.errors.category}
-                </p>
-              </div>
-            </div>
-            <input
-              id="category"
-              type="text"
-              className={`${styles.input_text} ${
-                formik.errors.category && formik.touched.category ? "border-rose-600" : ""
-              }`}
-              value={formik.getFieldProps("category")}
-              {...formik.getFieldProps("category")}
-            />
-          </div>
+
           {/* NATIONALITY */}
           <div className="pt-4 px-2">
             <div className="flex items-center">
@@ -311,6 +283,126 @@ function Player() {
               }`}
               value={formik.getFieldProps("nationality")}
               {...formik.getFieldProps("nationality")}
+            />
+          </div>
+          {/* HEIGHT */}
+          <div className="pt-4 px-2">
+            <div className="flex items-center">
+              <label htmlFor="height" className={styles.input_label}>
+                Inaltime
+              </label>
+              <div
+                className={`${
+                  formik.errors.height && formik.touched.height ? "inline" : "hidden"
+                } flex items-center group`}
+              >
+                <span className={``}>
+                  <AiOutlineQuestionCircle />
+                </span>
+                <p className="text-red-500 pl-2 invisible group-hover:visible">
+                  {formik.errors.height}
+                </p>
+              </div>
+            </div>
+            <input
+              type="text"
+              id="height"
+              className={`${styles.input_text} ${
+                formik.errors.height && formik.touched.height ? "border-rose-600" : ""
+              }`}
+              value={formik.getFieldProps("height")}
+              {...formik.getFieldProps("height")}
+            />
+          </div>
+          {/* WEIGHT */}
+          <div className="pt-4 px-2">
+            <div className="flex items-center">
+              <label htmlFor="weight" className={styles.input_label}>
+                Greutate
+              </label>
+              <div
+                className={`${
+                  formik.errors.weight && formik.touched.weight ? "inline" : "hidden"
+                } flex items-center group`}
+              >
+                <span className={``}>
+                  <AiOutlineQuestionCircle />
+                </span>
+                <p className="text-red-500 pl-2 invisible group-hover:visible">
+                  {formik.errors.weight}
+                </p>
+              </div>
+            </div>
+            <input
+              type="text"
+              id="weight"
+              className={`${styles.input_text} ${
+                formik.errors.weight && formik.touched.weight ? "border-rose-600" : ""
+              }`}
+              value={formik.getFieldProps("weight")}
+              {...formik.getFieldProps("weight")}
+            />
+          </div>
+          {/* DESCRIPTION TITLE */}
+          <div className="pt-4 px-2">
+            <div className="flex items-center">
+              <label htmlFor="descriptionTitle" className={styles.input_label}>
+                Titlu Descriere
+              </label>
+              <div
+                className={`${
+                  formik.errors.descriptionTitle && formik.touched.descriptionTitle
+                    ? "inline"
+                    : "hidden"
+                } flex items-center group`}
+              >
+                <span className={``}>
+                  <AiOutlineQuestionCircle />
+                </span>
+                <p className="text-red-500 pl-2 invisible group-hover:visible">
+                  {formik.errors.descriptionTitle}
+                </p>
+              </div>
+            </div>
+            <input
+              id="descriptionTitle"
+              type="text"
+              className={`${styles.input_text} ${
+                formik.errors.descriptionTitle && formik.touched.descriptionTitle
+                  ? "border-rose-600"
+                  : ""
+              }`}
+              value={formik.getFieldProps("descriptionTitle")}
+              {...formik.getFieldProps("descriptionTitle")}
+            />
+          </div>
+          {/* DESCRIPTION */}
+          <div className="pt-4 px-2">
+            <div className="flex items-center">
+              <label htmlFor="description" className={styles.input_label}>
+                Descriere
+              </label>
+              <div
+                className={`${
+                  formik.errors.description && formik.touched.description ? "inline" : "hidden"
+                } flex items-center group`}
+              >
+                <span className={``}>
+                  <AiOutlineQuestionCircle />
+                </span>
+                <p className="text-red-500 pl-2 invisible group-hover:visible">
+                  {formik.errors.description}
+                </p>
+              </div>
+            </div>
+            <input
+              id="description"
+              type="text"
+              className={`${styles.input_text} ${
+                formik.errors.description && formik.touched.description ? "border-rose-600" : ""
+              }`}
+              value={formik.getFieldProps("description")}
+              {...formik.getFieldProps("description")}
             />
           </div>
         </div>

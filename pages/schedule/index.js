@@ -1,19 +1,73 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import LayoutMain from "../../layout/layoutMain";
-import {GoLocation} from "react-icons/go";
 import {SlArrowRight} from "react-icons/sl";
+import {FaDesktop} from "react-icons/fa";
 function Schedule() {
-  const [isHovering, setIsHovering] = useState(false);
-  const handleMouseOver = () => {
-    setIsHovering(true);
+  const months = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  const m = new Date();
+  const [month, setMonth] = useState(months[m.getMonth()]);
+  const [timerDays, setTimerDays] = useState(0);
+  const [timerHours, setTimerHours] = useState(0);
+  const [timerMinutes, setTimerMinutes] = useState(0);
+  const [timerSecounds, setTimerSecounds] = useState(0);
+
+  let interval;
+  const startTimer = () => {
+    const countDownDate = new Date("2023-01-04 23:30").getTime();
+    console.log(countDownDate);
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+      const days = Math.floor(distance / (24 * 60 * 60 * 1000));
+      const hours = Math.floor((distance % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60));
+      const secounds = Math.floor((distance % (60 * 1000)) / 1000);
+      if (distance < 0) {
+        clearInterval(interval.current);
+      } else {
+        if (days < 10) {
+          setTimerDays("0" + days);
+        } else {
+          setTimerDays(days);
+        }
+        if (hours < 10) {
+          setTimerHours("0" + hours);
+        } else {
+          setTimerHours(hours);
+        }
+        if (minutes < 10) {
+          setTimerMinutes("0" + minutes);
+        } else {
+          setTimerMinutes(minutes);
+        }
+        if (secounds < 10) {
+          setTimerSecounds("0" + secounds);
+        } else {
+          setTimerSecounds(secounds);
+        }
+      }
+    });
   };
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  };
+  useEffect(() => {
+    startTimer();
+  });
   return (
     <LayoutMain>
       <div
-        className="relative overflow-hidden bg-no-repeat bg-cover bg-center mt-28 h-[400px] lg:h-[500px]"
+        className="relative overflow-hidden bg-no-repeat bg-cover bg-center mt-24 h-[400px] lg:h-[550px]"
         style={{
           backgroundImage: `url(https://www.realmadrid.com/img/ultrapanoramica_1500px/fondocalendariofutbol2_20201002054055.jpg)`,
         }}
@@ -24,30 +78,142 @@ function Schedule() {
         >
           <div className="flex justify-center items-center h-full">
             <div className="text-center text-white px-6 md:px-12">
-              <h1 className="text-5xl font-bold tracking-tight">CALENDAR</h1>
-              <h1 className="text-xl lg:text-3xl font-bold tracking-tight mt-5">NEXT MATCH</h1>
-              <div className="flex items-center justify-center mt-10 ">
-                <img src={nextMatch.logo_1} className="w-20 lg:w-24" alt={nextMatch.team_1} />
-                <h1 className="text-4xl">VS</h1>
-                <img src={nextMatch.logo_2} className="w-20 lg:w-24" alt={nextMatch.team_2} />
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mt-5 uppercase italic">
+                {nextMatch.date}
+              </h1>
+              <div className="flex items-center justify-center pt-3">
+                <h1 className="text-2xl font-bold tracking-tight">COUNT DOWN</h1>
+                <div className="px-3 flex space-x-1 font-bold">
+                  <div>
+                    <span>{timerDays}</span>
+                    <p className="text-xs">Days</p>
+                  </div>
+                  <span>:</span>
+                  <div>
+                    <p>{timerHours}</p>
+                    <p className="text-xs">Hours</p>
+                  </div>
+                  <span>:</span>
+                  <div>
+                    <p>{timerMinutes}</p>
+                    <p className="text-xs">Mins</p>
+                  </div>
+                  <span>:</span>
+                  <div>
+                    <p>{timerSecounds}</p>
+                    <p className="text-xs">Secs</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-between mt-10">
-                <h1 className="text-xl lg:text-3xl font-bold tracking-tight">{nextMatch.date}</h1>
-                <h1 className="text-xl lg:text-3xl font-bold tracking-tight">{nextMatch.hour}</h1>
+              <div className="flex items-center justify-center space-x-10 mt-10 ">
+                <div className="flex flex-col items-center">
+                  <img src={nextMatch.logo_1} className="w-20 lg:w-24" alt={nextMatch.team_1} />
+                  <p className="font-semibold">{nextMatch.team_1}</p>
+                </div>
+                <div className="flex space-x-2">
+                  <p className="text-4xl font-bold">{nextMatch.hour}</p>
+                  <p className="text-3xl font-bold">:</p>
+                  <p className="text-4xl font-bold">{nextMatch.minute}</p>
+                </div>
+                <div className="flex flex-col items-center ">
+                  <img src={nextMatch.logo_2} className="w-20 lg:w-24" alt={nextMatch.team_2} />
+                  <p className="font-semibold">{nextMatch.team_2}</p>
+                </div>
               </div>
               <h1 className="text-xl lg:text-3xl font-bold tracking-tight mt-5">
                 {nextMatch.location}
               </h1>
+              <div className="flex items-center justify-center space-x-3 pt-2">
+                <span>
+                  <FaDesktop />
+                </span>
+                <p className="underline cursor-pointer">Where to watch</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="text-white flex items-center justify-center mt-10 px-6">
-        <h1 className="text-2xl font-bold uppercase">Toate Meciurile</h1>
-      </div> */}
+
       <div className="my-10 bg-white rounded-t-2xl container mx-auto mb-8">
         <h1 className="p-4 text-3xl font-bold uppercase">FIRST TEAM Schedule</h1>
-        <h1 className="px-4 text-2xl font-semibold">December 2022</h1>
+        <div className="ml-4 md:ml-6 lg:ml-7 space-y-1 text-sm font-semibold cursor-pointer ">
+          <div className="flex space-x-5">
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("JAN")}>
+              JAN
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("FEB")}>
+              FEB
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("MAR")}>
+              MAR
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("APR")}>
+              APR
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("MAY")}>
+              MAY
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("JUN")}>
+              JUN
+            </p>
+            <p
+              className="hidden md:inline hover:scale-150 duration-300"
+              onClick={() => setMonth("JUL")}
+            >
+              JUL
+            </p>
+            <p
+              className="hidden md:inline hover:scale-150 duration-300"
+              onClick={() => setMonth("AUG")}
+            >
+              AUG
+            </p>
+            <p
+              className="hidden md:inline hover:scale-150 duration-300"
+              onClick={() => setMonth("SEP")}
+            >
+              SEP
+            </p>
+            <p
+              className="hidden md:inline hover:scale-150 duration-300"
+              onClick={() => setMonth("OCT")}
+            >
+              OCT
+            </p>
+            <p
+              className="hidden md:inline hover:scale-150 duration-300"
+              onClick={() => setMonth("NOV")}
+            >
+              NOV
+            </p>
+            <p
+              className="hidden md:inline hover:scale-150 duration-300"
+              onClick={() => setMonth("DEC")}
+            >
+              DEC
+            </p>
+          </div>
+          <div className="flex md:hidden space-x-5">
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("JUL")}>
+              JUL
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("AUG")}>
+              AUG
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("SEP")}>
+              SEP
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("OCT")}>
+              OCT
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("NOV")}>
+              NOV
+            </p>
+            <p className="hover:scale-150 duration-300" onClick={() => setMonth("DEC")}>
+              DEC
+            </p>
+          </div>
+        </div>
         {matches.map((item) => (
           <div key={item.id}>
             <div className="md:hidden pt-10 pl-10 flex items-center justify-between ">
@@ -111,49 +277,6 @@ function Schedule() {
 }
 
 export default Schedule;
-{
-  /* <div key={item.id}>
-            <div className="px-2 flex flex-col lg:flex-row lg:items-center">
-              <div className="flex items-center space-x-5">
-                <div className="flex justify-between w-full px-4 lg:flex lg:flex-col lg:justify-center lg:w-[200px]">
-                  <p className="text-xl font-semibold">{item.date}</p>
-                  <p className="text-lg font-semibold">{item.hour}</p>
-                </div>
-                <div className="hidden lg:inline border-l h-12" />
-                <img src={item.logo_campionat} className="hidden lg:inline w-16" />
-                <div className="hidden lg:inline border-l h-12" />
-              </div>
-              <div className="flex items-center w-full">
-                <h1 className="w-[300px] lg:w-[200px] xl:w-[300px] text-right text-xl font-semibold">
-                  {item.team_1}
-                </h1>
-                <div className="flex items-center justify-around w-full lg:w-[250px] xl:w-[300px]">
-                  <img src={item.logo_1} className="w-16" />
-                  <h1 className="text-xl font-semibold text-red-800">VS.</h1>
-                  <img src={item.logo_2} className="w-16" />
-                </div>
-                <h1 className="w-[300px] lg:w-[200px] xl:w-[300px] text-xl font-semibold">
-                  {item.team_2}
-                </h1>
-                <div className="hidden lg:inline border-l h-12" />
-              </div>
-              <div className="hidden lg:flex items-center justify-center w-full">
-                <p className="text-lg font-semibold lg:hidden 2xl:inline w-[300px]">
-                  {item.location}
-                </p>
-                <GoLocation
-                  size={24}
-                  className="hidden lg:inline 2xl:hidden"
-                  onClick={() => showDetails}
-                />
-              </div>
-              <div className="lg:hidden flex items-center justify-center text-lg font-semibold py-3">
-                {item.location}
-              </div>
-            </div>
-            <div className="border-b mb-2" />
-          </div> */
-}
 const nextMatch = {
   id: 1,
   team_1: "Real Valladolid",
@@ -165,7 +288,8 @@ const nextMatch = {
   logo_2:
     "https://www.realmadrid.com/StaticFiles/RealMadrid/directo/statics/primera/Rm_mediano.png",
   date: "Fri 30DEC",
-  hour: "21:30 h",
+  hour: "21",
+  minute: "30",
   location: "Estadio José Zorrilla",
 };
 const matches = [

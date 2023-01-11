@@ -32,7 +32,12 @@ function NextMatches({data}) {
           <MatchCard key={item.id} data={item} />
         ))}
       </div>
-      <div className="lg:hidden text-center text-xl font-bold my-10">Vezi tot calendarul</div>
+      <div
+        className="lg:hidden text-center text-xl font-bold my-10 hover:text-gray-300 font-semibold italic cursor-pointer"
+        onClick={() => router.push("/schedule")}
+      >
+        Vezi tot calendarul
+      </div>
     </div>
   );
 }

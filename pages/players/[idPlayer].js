@@ -3,7 +3,7 @@ import LayoutMain from "../../layout/layoutMain";
 function Jucator({player}) {
   return (
     <LayoutMain>
-      <div className="mt-24 text-white relative overflow-hidden bg-no-repeat bg-cover bg-center">
+      <div className="mt-24 text-white relative overflow-hidden bg-no-repeat bg-cover bg-center bg-gradient-to-t from-white via-blue-500 to-blue-900">
         <div
           className="flex flex-col md:flex-row justify-around bg-no-repeat bg-cover bg-center"
           style={{
@@ -44,7 +44,7 @@ function Jucator({player}) {
           <div className="mx-auto">
             <img
               className="h-[350px] md:h-[450px] lg:h-[600px] bg-no-repeat"
-              src="https://www.fcbarcelona.com/photo-resources/2022/11/02/a82e5b51-cf1d-48ca-872f-753ab665386a/mini_22-RAPHINHA.png?width=670&height=790"
+              src="/assets/player_15.png"
               //src={`data:image/jpeg;base64,${player.photo}`}
             />
             <div className="hidden md:flex relative w-full backdrop-blur-sm h-[90px] -mt-20">
@@ -116,10 +116,7 @@ function Jucator({player}) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="hidden md:inline mx-auto flex items-center justify-center">
-            <img
-              className="h-[350px] lg:h-[500px] bg-no-repeat"
-              src="https://www.fcbarcelona.com/photo-resources/2022/11/02/a82e5b51-cf1d-48ca-872f-753ab665386a/mini_22-RAPHINHA.png?width=670&height=790"
-            />
+            <img className="h-[350px] lg:h-[500px] bg-no-repeat" src="/assets/player_15.png" />
           </div>
           <div className="flex items-center justify-center mx-3 mt-10">
             <div>

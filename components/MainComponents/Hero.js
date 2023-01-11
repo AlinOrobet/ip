@@ -4,7 +4,7 @@ function Hero({data}) {
       <div
         className="relative overflow-hidden  bg-no-repeat bg-cover h-[500px] md:h-[700px]"
         style={{
-          backgroundImage: `url(${data.url})`,
+          backgroundImage: `url(${data.image})`,
         }}
       >
         <div
@@ -15,10 +15,16 @@ function Hero({data}) {
             <div className="text-center text-white px-6 md:px-12">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
                 {data.title}
-                <div className="flex items-center justify-center my-4 ">
-                  <img src={data.emblema1} className="w-24" />
-                  <h1 className="">{data.scor}</h1>
-                  <img src={data.emblema2} className="w-24" />
+                <div className="flex items-center justify-center my-6 space-x-5 ">
+                  <div className="flex flex-col items-center">
+                    <img src={data.logo_1} className="w-24" />
+                    <p className="text-2xl">{data.team_1}</p>
+                  </div>
+                  <span className="font-bold">{data.scor}</span>
+                  <div>
+                    <img src={data.logo_2} className="w-24" />
+                    <p className="text-2xl">{data.team_2}</p>
+                  </div>
                 </div>
               </h1>
               <button

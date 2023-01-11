@@ -2,9 +2,9 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import NavLinks from "./NavLinks";
 import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
-function Navbar({linkActive}) {
+function Navbar({linkActive, setCategory}) {
   const [open, setOpen] = useState(false);
-  const [color, setColor] = useState("#00040f");
+  const [color, setColor] = useState("#0D47A1");
   const [textColor, setTextColor] = useState("white");
   const handleNav = () => {
     setOpen(!open);
@@ -14,9 +14,9 @@ function Navbar({linkActive}) {
     const changeColor = () => {
       if (window.scrollY >= 90) {
         setColor("#ffffff");
-        setTextColor("#00040f");
+        setTextColor("#0D47A1");
       } else {
-        setColor("#00040f");
+        setColor("#0D47A1");
         setTextColor("white");
       }
     };
@@ -30,18 +30,18 @@ function Navbar({linkActive}) {
       <div className="m-auto flex justify-between items-center p-4 text-white">
         <Link href="/" className="flex items-center space-x-5 z-50 lg:w-auto w-full">
           <img src="/logo_CSM.png" className="h-16 ml-3" />
-          <h1 className="font-bold text-4xl md:text-4xl text-blue-800">
-            CSM{" "}
-            <span style={{color: `${textColor}`}} className="italic">
-              Suceava
-            </span>
+          <h1
+            className="font-bold text-4xl md:text-4xl text-blue-800"
+            style={{color: `${textColor}`}}
+          >
+            CSM <span className="italic">Suceava</span>
           </h1>
         </Link>
         <ul
           style={{color: `${textColor}`}}
           className="hidden lg:flex uppercase uppercase items-center gap-8"
         >
-          <NavLinks color={color} textColor={textColor} />
+          <NavLinks color={color} textColor={textColor} setCategory={setCategory} />
         </ul>
         {/* Mobile Button */}
         <div onClick={handleNav} className={`block lg:hidden z-10`}>
@@ -61,7 +61,7 @@ function Navbar({linkActive}) {
           }
         >
           <ul>
-            <NavLinks color={color} textColor={textColor} />
+            <NavLinks color={color} textColor={textColor} setCategory={setCategory} />
           </ul>
         </div>
       </div>
