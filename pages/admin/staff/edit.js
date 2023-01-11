@@ -1,15 +1,11 @@
 import LayoutEditAdmin from "../../../layout/layoutEditAdmin";
-import {AiOutlineQuestionCircle} from "react-icons/ai";
-import {useEffect, useState} from "react";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { useEffect, useState } from "react";
 import styles from "../../../styles/Form.module.css";
 import form_validate from "../../../lib/validate";
 import Content from "../../../components/AdminComponents/Content";
-import {useFormik} from "formik";
+import { useFormik } from "formik";
 function Edit() {
-  const roles = [
-    {id: 1, title: "Antrenor", value: "antrenor"},
-    {id: 2, title: "Preparator", value: "preparator"},
-  ];
   const [title, setTitle] = useState("Nedefinit");
   const handleChangeTitle = () => {
     if (!formik.values.firstName && !formik.values.lastName) {
@@ -21,20 +17,54 @@ function Edit() {
   });
   const formik = useFormik({
     initialValues: {
-      firstNname: "",
+      firstName: "",
       lastName: "",
-      role: "",
       dob: "",
       photo: "",
     },
     validate: form_validate,
     onSubmit,
   });
-  async function onSubmit(values) {}
+  async function onSubmit(values) {
+    let data = new FormData();
+    let imagedata = document.querySelector('input[type="file"]').files[0];
+    data.append(
+      "coach",
+      new Blob(
+        [
+          JSON.stringify({
+            firstName: values.firstName,
+            lastName: values.lastName,
+            dob: values.dob,
+          }),
+        ],
+        {
+          type: "application/json",
+        }
+      )
+    );
+
+    data.append("imagefile", imagedata);
+
+    await fetch("http://localhost:8080/api/coach/create", {
+      mode: "no-cors",
+      method: "POST",
+
+      body: data,
+    }).then((res) => res.json());
+  }
   return (
     <LayoutEditAdmin title={title}>
-      <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-        <Content title={title} styled={"italic"} iconRight={true} link="staff" />
+      <form
+        className="flex flex-col h-screen border-r"
+        onSubmit={formik.handleSubmit}
+      >
+        <Content
+          title={title}
+          styled={"italic"}
+          iconRight={true}
+          link="staff"
+        />
         <div className="flex-1 overflow-y-auto">
           {/* LAST NAME */}
           <div className="pt-4 px-2">
@@ -44,7 +74,9 @@ function Edit() {
               </label>
               <div
                 className={`${
-                  formik.errors.lastName && formik.touched.lastName ? "inline" : "hidden"
+                  formik.errors.lastName && formik.touched.lastName
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -60,7 +92,9 @@ function Edit() {
               id="lastName"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.lastName && formik.touched.lastName ? "border-rose-600" : ""
+                formik.errors.lastName && formik.touched.lastName
+                  ? "border-rose-600"
+                  : ""
               }`}
               {...formik.getFieldProps("lastName")}
             />
@@ -73,7 +107,9 @@ function Edit() {
               </label>
               <div
                 className={`${
-                  formik.errors.firstName && formik.touched.firstName ? "inline" : "hidden"
+                  formik.errors.firstName && formik.touched.firstName
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -88,7 +124,9 @@ function Edit() {
               id="firstName"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.firstName && formik.touched.firstName ? "border-rose-600" : ""
+                formik.errors.firstName && formik.touched.firstName
+                  ? "border-rose-600"
+                  : ""
               }`}
               {...formik.getFieldProps("firstName")}
             />
@@ -99,7 +137,9 @@ function Edit() {
               <label className={styles.input_label}>Imagine</label>
               <div
                 className={`${
-                  formik.errors.photo && formik.touched.photo ? "inline" : "hidden"
+                  formik.errors.photo && formik.touched.photo
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -129,16 +169,11 @@ function Edit() {
                     ></path>
                   </svg>
                   <p className="p-3 text-sm text-gray-500">
-                    <span className="font-semibold">Click to upload</span> or drag and drop
+                    <span className="font-semibold">Click to upload</span> or
+                    drag and drop
                   </p>
                 </div>
-                <input
-                  type="file"
-                  className="hidden"
-                  onChange={(event) => {
-                    setPhoto(event);
-                  }}
-                />
+                <input type="file" className="hidden" />
               </label>
             </div>
           </div>
@@ -177,7 +212,9 @@ function Edit() {
               </label>
               <div
                 className={`${
-                  formik.errors.role && formik.touched.role ? "inline" : "hidden"
+                  formik.errors.role && formik.touched.role
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -192,7 +229,9 @@ function Edit() {
               id="role"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.role && formik.touched.role ? "border-rose-600" : ""
+                formik.errors.role && formik.touched.role
+                  ? "border-rose-600"
+                  : ""
               }`}
               {...formik.getFieldProps("role")}
             />

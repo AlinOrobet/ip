@@ -1,7 +1,7 @@
 import React from "react";
 import LayoutPagesAdmin from "../../../layout/layoutPagesAdmin";
-function Players() {
-  const players = [
+function Players({ players }) {
+  /*const players = [
     {
       id: 1,
       category: "Category 1",
@@ -57,7 +57,7 @@ function Players() {
       photo: "Photo 5",
       shirtNumber: "shirt Number 5",
     },
-  ];
+  ];*/
   return (
     <LayoutPagesAdmin
       data={players}
@@ -69,12 +69,12 @@ function Players() {
 }
 
 export default Players;
-// export async function getServerProps() {
-//   const response = await fetch("");
-//   const data = await response.json();
-//   return {
-//     props: {
-//       players: data,
-//     },
-//   };
-// }
+export async function getServerSideProps() {
+  const response = await fetch("http://localhost:8080/api/player/players");
+  const data = await response.json();
+  return {
+    props: {
+      players: data,
+    },
+  };
+}
