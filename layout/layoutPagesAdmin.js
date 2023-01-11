@@ -4,7 +4,7 @@ import sidebarAdmin from "../data/sidebarAdmin";
 import Content from "../components/AdminComponents/Content";
 import Link from "next/link";
 import DataTitles from "../components/AdminComponents/DataTitles";
-function layoutPagesAdmin({data, pageTitle, link, type}) {
+function layoutPagesAdmin({ data, pageTitle, link, type }) {
   return (
     <LayoutDashboard data={sidebarAdmin}>
       <div className="lg:grid lg:grid-cols-10 grid gap-20 lg:gap-0">

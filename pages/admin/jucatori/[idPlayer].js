@@ -1,15 +1,12 @@
 import LayoutEditAdmin from "../../../layout/layoutEditAdmin";
-import {AiOutlineQuestionCircle} from "react-icons/ai";
-import {useEffect, useState} from "react";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { useEffect, useState } from "react";
 import styles from "../../../styles/Form.module.css";
 import form_validate from "../../../lib/validate";
 import Content from "../../../components/AdminComponents/Content";
-import {useFormik} from "formik";
-const player = {
-  firstName: "Alin",
-  lastName: "Orobet",
-};
-function Player() {
+import { useFormik } from "formik";
+function Player({ player }) {
+  console.log(player);
   const [title, setTitle] = useState("Nedefinit");
   const handleChangeTitle = () => {
     if (!formik.values.firstName && !formik.values.lastName) {
@@ -19,6 +16,10 @@ function Player() {
   useEffect(() => {
     handleChangeTitle();
   });
+  // const playerInit = {
+  //   firstName: player.firstName,
+  //   lastName: player.lastName,
+  // };
   const formik = useFormik({
     initialValues: player,
     validate: form_validate,
@@ -26,6 +27,7 @@ function Player() {
   });
 
   async function onSubmit(values) {
+    //TODO:
     let data = new FormData();
     let imagedata = document.querySelector('input[type="file"]').files[0];
     data.append(
@@ -33,7 +35,8 @@ function Player() {
       new Blob(
         [
           JSON.stringify({
-            firstName: values.firstNname,
+            id: values.id,
+            firstName: values.firstName,
             lastName: values.lastName,
             shirtNumber: values.shirtNumber,
             category: values.category,
@@ -50,17 +53,25 @@ function Player() {
 
     data.append("imagefile", imagedata);
 
-    await fetch("http://localhost:8080/api/player", {
+    await fetch("http://localhost:8080/api/player/update", {
       mode: "no-cors",
-      method: "POST",
+      method: "PUT",
 
       body: data,
     }).then((res) => res.json());
   }
   return (
     <LayoutEditAdmin title={title}>
-      <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-        <Content title={title} styled={"italic"} iconRight={true} link="jucatori" />
+      <form
+        className="flex flex-col h-screen border-r"
+        onSubmit={formik.handleSubmit}
+      >
+        <Content
+          title={title}
+          styled={"italic"}
+          iconRight={true}
+          link="jucatori"
+        />
         <div className="flex-1 overflow-y-auto mb-5">
           {/* LAST NAME */}
           <div className="pt-4 px-2">
@@ -70,7 +81,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.lastName && formik.touched.lastName ? "inline" : "hidden"
+                  formik.errors.lastName && formik.touched.lastName
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -85,7 +98,9 @@ function Player() {
               id="lastName"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.lastName && formik.touched.lastName ? "border-rose-600" : ""
+                formik.errors.lastName && formik.touched.lastName
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("lastName")}
               {...formik.getFieldProps("lastName")}
@@ -99,7 +114,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.firstName && formik.touched.firstName ? "inline" : "hidden"
+                  formik.errors.firstName && formik.touched.firstName
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -114,7 +131,9 @@ function Player() {
               id="firstName"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.firstName && formik.touched.firstName ? "border-rose-600" : ""
+                formik.errors.firstName && formik.touched.firstName
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("firstName")}
               {...formik.getFieldProps("firstName")}
@@ -126,7 +145,9 @@ function Player() {
               <label className={styles.input_label}>Imagine</label>
               <div
                 className={`${
-                  formik.errors.photo && formik.touched.photo ? "inline" : "hidden"
+                  formik.errors.photo && formik.touched.photo
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -156,7 +177,8 @@ function Player() {
                     ></path>
                   </svg>
                   <p className="p-3 text-sm text-gray-500">
-                    <span className="font-semibold">Click to upload</span> or drag and drop
+                    <span className="font-semibold">Click to upload</span> or
+                    drag and drop
                   </p>
                 </div>
                 <input
@@ -177,7 +199,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.category && formik.touched.category ? "inline" : "hidden"
+                  formik.errors.category && formik.touched.category
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -192,7 +216,9 @@ function Player() {
               id="category"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.category && formik.touched.category ? "border-rose-600" : ""
+                formik.errors.category && formik.touched.category
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("category")}
               {...formik.getFieldProps("category")}
@@ -234,7 +260,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.shirtNumber && formik.touched.shirtNumber ? "inline" : "hidden"
+                  formik.errors.shirtNumber && formik.touched.shirtNumber
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -249,7 +277,9 @@ function Player() {
               id="shirtNumber"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.shirtNumber && formik.touched.shirtNumber ? "border-rose-600" : ""
+                formik.errors.shirtNumber && formik.touched.shirtNumber
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("shirtNumber")}
               {...formik.getFieldProps("shirtNumber")}
@@ -264,7 +294,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.nationality && formik.touched.nationality ? "inline" : "hidden"
+                  formik.errors.nationality && formik.touched.nationality
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -279,7 +311,9 @@ function Player() {
               id="nationality"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.nationality && formik.touched.nationality ? "border-rose-600" : ""
+                formik.errors.nationality && formik.touched.nationality
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("nationality")}
               {...formik.getFieldProps("nationality")}
@@ -293,7 +327,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.height && formik.touched.height ? "inline" : "hidden"
+                  formik.errors.height && formik.touched.height
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -308,7 +344,9 @@ function Player() {
               type="text"
               id="height"
               className={`${styles.input_text} ${
-                formik.errors.height && formik.touched.height ? "border-rose-600" : ""
+                formik.errors.height && formik.touched.height
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("height")}
               {...formik.getFieldProps("height")}
@@ -322,7 +360,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.weight && formik.touched.weight ? "inline" : "hidden"
+                  formik.errors.weight && formik.touched.weight
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -337,7 +377,9 @@ function Player() {
               type="text"
               id="weight"
               className={`${styles.input_text} ${
-                formik.errors.weight && formik.touched.weight ? "border-rose-600" : ""
+                formik.errors.weight && formik.touched.weight
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("weight")}
               {...formik.getFieldProps("weight")}
@@ -351,7 +393,8 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.descriptionTitle && formik.touched.descriptionTitle
+                  formik.errors.descriptionTitle &&
+                  formik.touched.descriptionTitle
                     ? "inline"
                     : "hidden"
                 } flex items-center group`}
@@ -368,7 +411,8 @@ function Player() {
               id="descriptionTitle"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.descriptionTitle && formik.touched.descriptionTitle
+                formik.errors.descriptionTitle &&
+                formik.touched.descriptionTitle
                   ? "border-rose-600"
                   : ""
               }`}
@@ -384,7 +428,9 @@ function Player() {
               </label>
               <div
                 className={`${
-                  formik.errors.description && formik.touched.description ? "inline" : "hidden"
+                  formik.errors.description && formik.touched.description
+                    ? "inline"
+                    : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -399,7 +445,9 @@ function Player() {
               id="description"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.description && formik.touched.description ? "border-rose-600" : ""
+                formik.errors.description && formik.touched.description
+                  ? "border-rose-600"
+                  : ""
               }`}
               value={formik.getFieldProps("description")}
               {...formik.getFieldProps("description")}
@@ -425,16 +473,18 @@ function Player() {
 }
 
 export default Player;
-// export async function getServerProps(context) {
-//   const {params} = context;
-//   const responsePlayer = await fetch(`http://localhost:4000/players/${params.idPlayer}`);
-//   const player = await responsePlayer.json();
-//   const responsePlayers = await fetch("http://localhost:4000/players");
-//   const players = await responsePlayers.json();
-//   return {
-//     props: {
-//       player,
-//       players,
-//     },
-//   };
-// }
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const responsePlayer = await fetch(
+    `http://localhost:8080/api/player/${params.idPlayer}`
+  );
+  const player = await responsePlayer.json();
+  // const responsePlayers = await fetch("");
+  // const players = await responsePlayers.json();
+  return {
+    props: {
+      player,
+      // players,
+    },
+  };
+}

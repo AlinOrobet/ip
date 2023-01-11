@@ -1,10 +1,10 @@
 import LayoutEditAdmin from "../../../layout/layoutEditAdmin";
-import {AiOutlineQuestionCircle} from "react-icons/ai";
-import {useEffect, useState} from "react";
+import { AiOutlineQuestionCircle } from "react-icons/ai";
+import { useEffect, useState } from "react";
 import styles from "../../../styles/Form.module.css";
 import form_validate from "../../../lib/validate";
 import Content from "../../../components/AdminComponents/Content";
-import {useFormik} from "formik";
+import { useFormik } from "formik";
 import PlayerPage from "../../../components/ForDisplay/PlayerPage";
 function Edit() {
   const [title, setTitle] = useState("Nedefinit");
@@ -28,7 +28,7 @@ function Edit() {
       category: "",
       nationality: "",
       photo: "",
-      descriptionTitle: "",
+      title: "",
       description: "",
     },
     validate: form_validate,
@@ -42,7 +42,7 @@ function Edit() {
       new Blob(
         [
           JSON.stringify({
-            firstName: values.firstNname,
+            firstName: values.firstName,
             lastName: values.lastName,
             shirtNumber: values.shirtNumber,
             category: values.category,
@@ -59,7 +59,7 @@ function Edit() {
 
     data.append("imagefile", imagedata);
 
-    await fetch("http://localhost:8080/api/player", {
+    await fetch("http://localhost:8080/api/player/create", {
       mode: "no-cors",
       method: "POST",
 
@@ -69,8 +69,16 @@ function Edit() {
   return (
     <LayoutEditAdmin title={title} display="PlayerPage">
       <div className="col-span-3">
-        <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-          <Content title={title} styled={"italic"} iconRight={true} link="jucatori" />
+        <form
+          className="flex flex-col h-screen border-r"
+          onSubmit={formik.handleSubmit}
+        >
+          <Content
+            title={title}
+            styled={"italic"}
+            iconRight={true}
+            link="jucatori"
+          />
           <div className="flex-1 overflow-y-auto mb-5">
             {/* LAST NAME */}
             <div className="pt-4 px-2">
@@ -80,7 +88,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.lastName && formik.touched.lastName ? "inline" : "hidden"
+                    formik.errors.lastName && formik.touched.lastName
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -96,7 +106,9 @@ function Edit() {
                 id="lastName"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.lastName && formik.touched.lastName ? "border-rose-600" : ""
+                  formik.errors.lastName && formik.touched.lastName
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("lastName")}
               />
@@ -109,7 +121,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.firstName && formik.touched.firstName ? "inline" : "hidden"
+                    formik.errors.firstName && formik.touched.firstName
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -124,7 +138,9 @@ function Edit() {
                 id="firstName"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.firstName && formik.touched.firstName ? "border-rose-600" : ""
+                  formik.errors.firstName && formik.touched.firstName
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("firstName")}
               />
@@ -135,7 +151,9 @@ function Edit() {
                 <label className={styles.input_label}>Imagine</label>
                 <div
                   className={`${
-                    formik.errors.photo && formik.touched.photo ? "inline" : "hidden"
+                    formik.errors.photo && formik.touched.photo
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -165,15 +183,16 @@ function Edit() {
                       ></path>
                     </svg>
                     <p className="p-3 text-sm text-gray-500">
-                      <span className="font-semibold">Click to upload</span> or drag and drop
+                      <span className="font-semibold">Click to upload</span> or
+                      drag and drop
                     </p>
                   </div>
                   <input
                     type="file"
                     className="hidden"
-                    onChange={(event) => {
-                      setPhoto(event);
-                    }}
+                    // onChange={(event) => {
+                    //   setPhoto(event);
+                    // }}
                   />
                 </label>
               </div>
@@ -186,7 +205,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.category && formik.touched.category ? "inline" : "hidden"
+                    formik.errors.category && formik.touched.category
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -201,7 +222,9 @@ function Edit() {
                 id="category"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.category && formik.touched.category ? "border-rose-600" : ""
+                  formik.errors.category && formik.touched.category
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("category")}
               />
@@ -215,7 +238,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.dob && formik.touched.dob ? "inline" : "hidden"
+                    formik.errors.dob && formik.touched.dob
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -229,7 +254,9 @@ function Edit() {
               <input
                 type="date"
                 className={`${styles.input_text} ${
-                  formik.errors.dob && formik.touched.dob ? "border-rose-600" : ""
+                  formik.errors.dob && formik.touched.dob
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("dob")}
               />
@@ -242,7 +269,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.shirtNumber && formik.touched.shirtNumber ? "inline" : "hidden"
+                    formik.errors.shirtNumber && formik.touched.shirtNumber
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -257,7 +286,9 @@ function Edit() {
                 id="shirtNumber"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.shirtNumber && formik.touched.shirtNumber ? "border-rose-600" : ""
+                  formik.errors.shirtNumber && formik.touched.shirtNumber
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("shirtNumber")}
               />
@@ -270,7 +301,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.nationality && formik.touched.nationality ? "inline" : "hidden"
+                    formik.errors.nationality && formik.touched.nationality
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -285,7 +318,9 @@ function Edit() {
                 id="nationality"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.nationality && formik.touched.nationality ? "border-rose-600" : ""
+                  formik.errors.nationality && formik.touched.nationality
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("nationality")}
               />
@@ -298,7 +333,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.height && formik.touched.height ? "inline" : "hidden"
+                    formik.errors.height && formik.touched.height
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -313,7 +350,9 @@ function Edit() {
                 type="text"
                 id="height"
                 className={`${styles.input_text} ${
-                  formik.errors.height && formik.touched.height ? "border-rose-600" : ""
+                  formik.errors.height && formik.touched.height
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("height")}
               />
@@ -326,7 +365,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.weight && formik.touched.weight ? "inline" : "hidden"
+                    formik.errors.weight && formik.touched.weight
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -341,7 +382,9 @@ function Edit() {
                 type="text"
                 id="weight"
                 className={`${styles.input_text} ${
-                  formik.errors.weight && formik.touched.weight ? "border-rose-600" : ""
+                  formik.errors.weight && formik.touched.weight
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("weight")}
               />
@@ -349,12 +392,16 @@ function Edit() {
             {/* DESCRIPTION TITLE */}
             <div className="pt-4 px-2">
               <div className="flex items-center">
-                <label htmlFor="descriptionTitle" className={styles.input_label}>
+                <label
+                  htmlFor="descriptionTitle"
+                  className={styles.input_label}
+                >
                   Titlu Descriere
                 </label>
                 <div
                   className={`${
-                    formik.errors.descriptionTitle && formik.touched.descriptionTitle
+                    formik.errors.descriptionTitle &&
+                    formik.touched.descriptionTitle
                       ? "inline"
                       : "hidden"
                   } flex items-center group`}
@@ -371,7 +418,8 @@ function Edit() {
                 id="descriptionTitle"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.descriptionTitle && formik.touched.descriptionTitle
+                  formik.errors.descriptionTitle &&
+                  formik.touched.descriptionTitle
                     ? "border-rose-600"
                     : ""
                 }`}
@@ -386,7 +434,9 @@ function Edit() {
                 </label>
                 <div
                   className={`${
-                    formik.errors.description && formik.touched.description ? "inline" : "hidden"
+                    formik.errors.description && formik.touched.description
+                      ? "inline"
+                      : "hidden"
                   } flex items-center group`}
                 >
                   <span className={``}>
@@ -401,7 +451,9 @@ function Edit() {
                 id="description"
                 type="text"
                 className={`${styles.input_text} ${
-                  formik.errors.description && formik.touched.description ? "border-rose-600" : ""
+                  formik.errors.description && formik.touched.description
+                    ? "border-rose-600"
+                    : ""
                 }`}
                 {...formik.getFieldProps("description")}
               />
