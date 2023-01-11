@@ -39,7 +39,6 @@ function LayoutMain({children, setCategory}) {
           >
             Subscribe
           </button>
-          <div>Schimbare</div>
         </div>
       </div>
       <Footer />
