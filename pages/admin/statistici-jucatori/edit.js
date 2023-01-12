@@ -32,9 +32,14 @@ function Edit() {
   });
   async function onSubmit(values) {}
   return (
-    <LayoutEditAdmin title={title}>
+    <LayoutEditAdmin title="Administrator">
       <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-        <Content title={title} styled={"italic"} iconRight={true} link="statistici-jucatori" />
+        <Content
+          title={title}
+          styled={"italic"}
+          iconRight={true}
+          link="admin/statistici-jucatori"
+        />
         <div className="flex-1 overflow-y-auto">
           {/* PLAYER */}
           <div className="pt-4 px-2">

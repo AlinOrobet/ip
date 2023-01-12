@@ -62,8 +62,9 @@ function Matches() {
     <LayoutPagesAdmin
       data={players}
       pageTitle="Meciuri"
-      link="/meciuri"
+      link="admin/meciuri"
       type="match"
+      title="Administrator"
     ></LayoutPagesAdmin>
   );
 }

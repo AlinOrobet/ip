@@ -1,6 +1,6 @@
 import React from "react";
 import LayoutPagesAdmin from "../../../layout/layoutPagesAdmin";
-function Players({ players }) {
+function Players({players}) {
   /*const players = [
     {
       id: 1,
@@ -62,8 +62,9 @@ function Players({ players }) {
     <LayoutPagesAdmin
       data={players}
       pageTitle="Jucatori"
-      link="/jucatori"
+      link="admin/jucatori"
       type="player"
+      title="Administrator"
     ></LayoutPagesAdmin>
   );
 }

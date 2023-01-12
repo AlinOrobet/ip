@@ -5,9 +5,8 @@ function SidebarTitle({data, open}) {
     <div className={`mt-3 flex flex-col gap-4 relative`}>
       <Link
         href={data.link}
-        className={`${
-          data?.margin && "mt-5"
-        } group flex items-center text-lg gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+        className={`${data?.margin && "mt-5"}
+         group flex items-center text-md gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
       >
         <div>{data.icon}</div>
         <h2

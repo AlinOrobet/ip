@@ -10,22 +10,40 @@ function Match() {
   const handleChangeTitle = () => {
     if (!formik.values.team_1 && !formik.values.team_2) {
       setTitle("Nedefinit");
-    } else setTitle(formik.values.team_1 + " VS " + formik.values.team_2);
+    } else
+      setTitle(
+        formik.values.team_1 +
+          " VS " +
+          formik.values.team_2 +
+          " - " +
+          formik.values.scorTeam_1 +
+          " : " +
+          formik.values.scorTeam_2
+      );
   };
   useEffect(() => {
     handleChangeTitle();
   });
   const formik = useFormik({
-    initialValues: staffMember,
+    initialValues: match,
     validate: form_validate,
     onSubmit,
   });
 
   async function onSubmit(values) {}
+  //DELETE
+  const [toDelete, setToDelete] = useState(false);
+  //TODO func remove
   return (
-    <LayoutEditAdmin title={title}>
+    <LayoutEditAdmin title="Administrator">
       <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-        <Content title={title} styled={"italic"} iconRight={true} link="meciuri" />
+        <Content
+          title={title}
+          styled={"italic"}
+          iconRight={true}
+          link="admin/meciuri"
+          setToDelete={setToDelete}
+        />
         <div className="flex-1 overflow-y-auto">
           {/* TEAM_1 */}
           <div className="pt-4 px-2">
@@ -61,40 +79,6 @@ function Match() {
               ))}
             </select>
           </div>
-          {/* LOGO_1 */}
-          <div className="pt-4 px-2">
-            <div className="flex items-center">
-              <label htmlFor="logo_1" className={styles.input_label}>
-                Logo Echipa Gazda
-              </label>
-              <div
-                className={`${
-                  formik.errors.logo_1 && formik.touched.logo_1 ? "inline" : "hidden"
-                } flex items-center group`}
-              >
-                <span className={``}>
-                  <AiOutlineQuestionCircle />
-                </span>
-                <p className="text-red-500 pl-2 invisible group-hover:visible">
-                  {formik.errors.logo_1}
-                </p>
-              </div>
-            </div>
-            <select
-              id="logo_1"
-              className={`${styles.input_text} ${
-                formik.errors.logo_1 && formik.touched.logo_1 ? "border-rose-600" : ""
-              }`}
-              {...formik.getFieldProps("logo_1")}
-            >
-              <option>Alege Logo Echipa Gazda</option>
-              {teams.map((item) => (
-                <option key={item.id} value={item.teamName}>
-                  {item.logo}
-                </option>
-              ))}
-            </select>
-          </div>
           {/* TEAM_2 */}
           <div className="pt-4 px-2">
             <div className="flex items-center">
@@ -125,40 +109,6 @@ function Match() {
               {teams.map((item) => (
                 <option key={item.id} value={item.teamName}>
                   {item.teamName}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* LOGO_2 */}
-          <div className="pt-4 px-2">
-            <div className="flex items-center">
-              <label htmlFor="logo_2" className={styles.input_label}>
-                Logo Echipa Oaspete
-              </label>
-              <div
-                className={`${
-                  formik.errors.logo_2 && formik.touched.logo_2 ? "inline" : "hidden"
-                } flex items-center group`}
-              >
-                <span className={``}>
-                  <AiOutlineQuestionCircle />
-                </span>
-                <p className="text-red-500 pl-2 invisible group-hover:visible">
-                  {formik.errors.logo_2}
-                </p>
-              </div>
-            </div>
-            <select
-              id="logo_2"
-              className={`${styles.input_text} ${
-                formik.errors.logo_2 && formik.touched.logo_2 ? "border-rose-600" : ""
-              }`}
-              {...formik.getFieldProps("logo_2")}
-            >
-              <option>Alege Logo Echipa Oaspete</option>
-              {teams.map((item) => (
-                <option key={item.id} value={item.teamName}>
-                  {item.logo}
                 </option>
               ))}
             </select>
@@ -213,7 +163,7 @@ function Match() {
 
             <input
               id="hour"
-              type="text"
+              type="time"
               className={`${styles.input_text} ${
                 formik.errors.hour && formik.touched.hour ? "border-rose-600" : ""
               }`}
@@ -250,6 +200,63 @@ function Match() {
               {...formik.getFieldProps("location")}
             />
           </div>
+          {/* SCOR */}
+          <div className="flex">
+            <div className="pt-4 px-2 w-1/2">
+              <div className="flex items-center">
+                <label htmlFor="scorTeam_1" className={styles.input_label}>
+                  Scor Echipa Gazda
+                </label>
+                <div
+                  className={`${
+                    formik.errors.scorTeam_1 && formik.touched.scorTeam_1 ? "inline" : "hidden"
+                  } flex items-center group`}
+                >
+                  <span className={``}>
+                    <AiOutlineQuestionCircle />
+                  </span>
+                  <p className="text-red-500 pl-2 invisible group-hover:visible">
+                    {formik.errors.scorTeam_1}
+                  </p>
+                </div>
+              </div>
+              <input
+                id="scorTeam_1"
+                type="text"
+                className={`${styles.input_text} ${
+                  formik.errors.scorTeam_1 && formik.touched.scorTeam_1 ? "border-rose-600" : ""
+                }`}
+                {...formik.getFieldProps("scorTeam_1")}
+              />
+            </div>
+            <div className="pt-4 px-2 w-1/2">
+              <div className="flex items-center">
+                <label htmlFor="scorTeam_2" className={styles.input_label}>
+                  Scor Echipa Oaspete
+                </label>
+                <div
+                  className={`${
+                    formik.errors.scorTeam_2 && formik.touched.scorTeam_2 ? "inline" : "hidden"
+                  } flex items-center group`}
+                >
+                  <span className={``}>
+                    <AiOutlineQuestionCircle />
+                  </span>
+                  <p className="text-red-500 pl-2 invisible group-hover:visible">
+                    {formik.errors.scorTeam_2}
+                  </p>
+                </div>
+              </div>
+              <input
+                id="scorTeam_2"
+                type="text"
+                className={`${styles.input_text} ${
+                  formik.errors.scorTeam_2 && formik.touched.scorTeam_2 ? "border-rose-600" : ""
+                }`}
+                {...formik.getFieldProps("scorTeam_2")}
+              />
+            </div>
+          </div>
         </div>
         <div className="border-t px-2 py-3">
           <button
@@ -277,7 +284,4 @@ const teams = [
     logo: "https://www.realmadrid.com/StaticFiles/RealMadrid/directo/statics/primera/valladolid_mediano.png",
   },
 ];
-const staffMember = {
-  firstName: "Alin",
-  lastName: "Orobet",
-};
+const match = [];

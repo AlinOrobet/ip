@@ -28,10 +28,19 @@ function PlayerStats() {
   });
 
   async function onSubmit(values) {}
+  //DELETE
+  const [toDelete, setToDelete] = useState(false);
+  //TODO func remove
   return (
-    <LayoutEditAdmin title={title}>
+    <LayoutEditAdmin title="Administrator">
       <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-        <Content title={title} styled={"italic"} iconRight={true} link="statistici-jucatori" />
+        <Content
+          title={title}
+          styled={"italic"}
+          iconRight={true}
+          link="admin/statistici-jucatori"
+          setToDelete={setToDelete}
+        />
         <div className="flex-1 overflow-y-auto">
           {/* PLAYER */}
           <div className="pt-4 px-2">

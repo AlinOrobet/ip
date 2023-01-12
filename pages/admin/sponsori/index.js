@@ -62,8 +62,9 @@ function Matches() {
     <LayoutPagesAdmin
       data={players}
       pageTitle="Sponsori"
-      link="/sponsori"
+      link="admin/sponsori"
       type="sponsor"
+      title="Administrator"
     ></LayoutPagesAdmin>
   );
 }

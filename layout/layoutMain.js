@@ -4,10 +4,11 @@ import Footer from "../components/MainComponents/Footer";
 function LayoutMain({children, setCategory}) {
   const [email, setEmail] = useState("");
   async function onSubmit() {
-    await fetch(`http://localhost:8080/api/subscriber/add/?email=${email}`, {
-      mode: "no-cors",
-      method: "POST",
-    });
+    // await fetch(`http://localhost:8080/api/subscriber/add/?email=${email}`, {
+    //   mode: "no-cors",
+    //   method: "POST",
+    // });
+    setEmail("");
   }
   return (
     <div className="bg-gradient-to-t from-white via-blue-500 to-blue-900  w-full overflow-hidden">
@@ -27,9 +28,8 @@ function LayoutMain({children, setCategory}) {
           <input
             className="rounded-md h-10 w-64 lg:w-96 outline-none p-2.5"
             type="email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
-
-            //todo: delete after submit . Embarasada
           />
           <button
             className="rounded-md bg-white h-10 px-3 bg-gradient-to-r from-blue-400 to-indigo-400"

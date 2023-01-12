@@ -25,7 +25,7 @@ function Navbar({linkActive, setCategory}) {
   return (
     <div
       style={{backgroundColor: `${color}`}}
-      className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
+      className="fixed left-0 top-0 w-full z-10 ease-in duration-300 "
     >
       <div className="m-auto flex justify-between items-center p-4 text-white">
         <Link href="/" className="flex items-center space-x-5 z-50 lg:w-auto w-full">

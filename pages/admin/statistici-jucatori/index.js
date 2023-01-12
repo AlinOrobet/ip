@@ -62,8 +62,9 @@ function PlayersStats() {
     <LayoutPagesAdmin
       data={players}
       pageTitle="Statistici Jucatori"
-      link="/statistici-jucatori"
+      link="admin/statistici-jucatori"
       type="player"
+      title="Administrator"
     ></LayoutPagesAdmin>
   );
 }

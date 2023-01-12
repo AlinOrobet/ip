@@ -12,6 +12,6 @@ const data = [
     style: "mt-6",
   },
   {id: 3, title: "Settings", link: "settings", icon: <IoSettings size={30} />, style: "mt-28"},
-  {id: 4, title: "Log out", link: "logout", icon: <IoExit size={30} />, style: "mt-2"},
+  {id: 4, title: "Log out", link: "/", icon: <IoExit size={30} />, style: "mt-2"},
 ];
 export default data;

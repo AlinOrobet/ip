@@ -8,6 +8,8 @@ function DataTitles({type, item, activeId}) {
     newItem.title = item.firstName + " " + item.lastName;
   } else if (type === "match") {
     newItem.title = item.team_1 + " VS " + item.team_2;
+  } else if (type === "team") {
+    newItem.title = item.name;
   }
   return (
     <div className="flex flex-col">

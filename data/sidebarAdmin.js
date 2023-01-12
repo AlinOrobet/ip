@@ -7,6 +7,7 @@ import {MdOutlineHistory} from "react-icons/md";
 import {MdOutlinePaid} from "react-icons/md";
 import {IoSettings} from "react-icons/io5";
 import {IoExit} from "react-icons/io5";
+import {RiTeamFill} from "react-icons/ri";
 const data = [
   {id: 1, title: "Dashboard", link: "/admin", icon: <RiDashboardFill size={30} />, margin: true},
   {id: 2, title: "Staff", link: "/admin/staff", icon: <IoIosPeople size={30} />, margin: true},
@@ -24,24 +25,30 @@ const data = [
   },
   {
     id: 5,
-    title: "Meciuri",
-    link: "/admin/meciuri",
-    icon: <MdNextWeek size={30} />,
+    title: "Echipe",
+    link: "/admin/teams",
+    icon: <RiTeamFill size={30} />,
     margin: true,
   },
   {
     id: 6,
-    title: "CC History",
-    link: "/admin/cc-history",
-    icon: <MdOutlineHistory size={30} />,
-    margin: true,
+    title: "Meciuri",
+    link: "/admin/meciuri",
+    icon: <MdNextWeek size={30} />,
   },
-  {
-    id: 7,
-    title: "Admin History",
-    link: "/admin/admin-history",
-    icon: <MdOutlineHistory size={30} />,
-  },
+  // {
+  //   id: 6,
+  //   title: "CC History",
+  //   link: "/admin/cc-history",
+  //   icon: <MdOutlineHistory size={30} />,
+  //   margin: true,
+  // },
+  // {
+  //   id: 7,
+  //   title: "Admin History",
+  //   link: "/admin/admin-history",
+  //   icon: <MdOutlineHistory size={30} />,
+  // },
   {
     id: 8,
     title: "Sponsori",
@@ -56,6 +63,6 @@ const data = [
     icon: <IoSettings size={30} />,
     margin: true,
   },
-  {id: 10, title: "Log out", link: "/admin/logout", icon: <IoExit size={30} />},
+  {id: 10, title: "Log out", link: "/", icon: <IoExit size={30} />},
 ];
 export default data;

@@ -1,10 +1,10 @@
 import LayoutEditAdmin from "../../../layout/layoutEditAdmin";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import {AiOutlineQuestionCircle} from "react-icons/ai";
+import {useEffect, useState} from "react";
 import styles from "../../../styles/Form.module.css";
 import form_validate from "../../../lib/validate";
 import Content from "../../../components/AdminComponents/Content";
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 function Edit() {
   const [title, setTitle] = useState("Nedefinit");
   const handleChangeTitle = () => {
@@ -21,6 +21,7 @@ function Edit() {
       lastName: "",
       dob: "",
       photo: "",
+      role: "",
     },
     validate: form_validate,
     onSubmit,
@@ -36,6 +37,8 @@ function Edit() {
             firstName: values.firstName,
             lastName: values.lastName,
             dob: values.dob,
+            photo: values.photo,
+            role: values.role,
           }),
         ],
         {
@@ -54,17 +57,9 @@ function Edit() {
     }).then((res) => res.json());
   }
   return (
-    <LayoutEditAdmin title={title}>
-      <form
-        className="flex flex-col h-screen border-r"
-        onSubmit={formik.handleSubmit}
-      >
-        <Content
-          title={title}
-          styled={"italic"}
-          iconRight={true}
-          link="staff"
-        />
+    <LayoutEditAdmin title="Administrator">
+      <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
+        <Content title={title} styled={"italic"} iconRight={true} link="admin/staff" />
         <div className="flex-1 overflow-y-auto">
           {/* LAST NAME */}
           <div className="pt-4 px-2">
@@ -74,9 +69,7 @@ function Edit() {
               </label>
               <div
                 className={`${
-                  formik.errors.lastName && formik.touched.lastName
-                    ? "inline"
-                    : "hidden"
+                  formik.errors.lastName && formik.touched.lastName ? "inline" : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -92,9 +85,7 @@ function Edit() {
               id="lastName"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.lastName && formik.touched.lastName
-                  ? "border-rose-600"
-                  : ""
+                formik.errors.lastName && formik.touched.lastName ? "border-rose-600" : ""
               }`}
               {...formik.getFieldProps("lastName")}
             />
@@ -107,9 +98,7 @@ function Edit() {
               </label>
               <div
                 className={`${
-                  formik.errors.firstName && formik.touched.firstName
-                    ? "inline"
-                    : "hidden"
+                  formik.errors.firstName && formik.touched.firstName ? "inline" : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -124,9 +113,7 @@ function Edit() {
               id="firstName"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.firstName && formik.touched.firstName
-                  ? "border-rose-600"
-                  : ""
+                formik.errors.firstName && formik.touched.firstName ? "border-rose-600" : ""
               }`}
               {...formik.getFieldProps("firstName")}
             />
@@ -137,9 +124,7 @@ function Edit() {
               <label className={styles.input_label}>Imagine</label>
               <div
                 className={`${
-                  formik.errors.photo && formik.touched.photo
-                    ? "inline"
-                    : "hidden"
+                  formik.errors.photo && formik.touched.photo ? "inline" : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -169,8 +154,7 @@ function Edit() {
                     ></path>
                   </svg>
                   <p className="p-3 text-sm text-gray-500">
-                    <span className="font-semibold">Click to upload</span> or
-                    drag and drop
+                    <span className="font-semibold">Click to upload</span> or drag and drop
                   </p>
                 </div>
                 <input type="file" className="hidden" />
@@ -212,9 +196,7 @@ function Edit() {
               </label>
               <div
                 className={`${
-                  formik.errors.role && formik.touched.role
-                    ? "inline"
-                    : "hidden"
+                  formik.errors.role && formik.touched.role ? "inline" : "hidden"
                 } flex items-center group`}
               >
                 <span className={``}>
@@ -229,9 +211,7 @@ function Edit() {
               id="role"
               type="text"
               className={`${styles.input_text} ${
-                formik.errors.role && formik.touched.role
-                  ? "border-rose-600"
-                  : ""
+                formik.errors.role && formik.touched.role ? "border-rose-600" : ""
               }`}
               {...formik.getFieldProps("role")}
             />

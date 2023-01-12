@@ -1,9 +1,9 @@
 import {AiOutlineClose} from "react-icons/ai";
-import {FiMoreVertical} from "react-icons/fi";
+import {RiDeleteBinLine} from "react-icons/ri";
 import {GrAdd} from "react-icons/gr";
 import {useRouter} from "next/router";
 import Link from "next/link";
-function Content({title, iconRight, styled, link}) {
+function Content({title, iconRight, styled, link, setToDelete}) {
   const router = useRouter();
   return (
     <div className="border-r">
@@ -14,7 +14,13 @@ function Content({title, iconRight, styled, link}) {
         <div>
           {iconRight ? (
             <div className="flex pr-4 text-gray-600 ">
-              <FiMoreVertical size={40} className="p-2 hover:bg-gray-200" />
+              <RiDeleteBinLine
+                size={40}
+                className="p-2 hover:bg-gray-200"
+                onClick={() => {
+                  setToDelete(true);
+                }}
+              />
               <AiOutlineClose
                 size={40}
                 className="p-2 hover:bg-gray-200"

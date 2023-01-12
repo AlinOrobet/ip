@@ -3,7 +3,7 @@ import LayoutMain from "../../layout/layoutMain";
 function Jucator({player}) {
   return (
     <LayoutMain>
-      <div className="mt-24 text-white relative overflow-hidden bg-no-repeat bg-cover bg-center bg-gradient-to-t from-white via-blue-500 to-blue-900">
+      <div className="mt-24 text-white relative overflow-hidden bg-no-repeat bg-cover bg-center pb-10">
         <div
           className="flex flex-col md:flex-row justify-around bg-no-repeat bg-cover bg-center"
           style={{
@@ -120,11 +120,11 @@ function Jucator({player}) {
           </div>
           <div className="flex items-center justify-center mx-3 mt-10">
             <div>
-              <h1 className="text-xl lg:text-4xl font-bold">
+              <h1 className="text-2xl lg:text-4xl font-bold">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.Enim, eligendi.Facere,maxime
                 remins sdsad s dd sd s sd s s
               </h1>
-              <p className="text-gray-400 mt-4 lg:text-xl">
+              <p className="font-semibold mt-4 lg:text-xl">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem adipisci quidem
                 est eos, voluptas esse voluptates enim obcaecati architecto quisquam, quasi aliquam
                 iure nihil nesciunt deserunt harum autem qui! Soluta.

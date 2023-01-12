@@ -45,7 +45,7 @@ function NavLinks({color, textColor, setCategory}) {
   return (
     <>
       {links.map((link) => (
-        <div key={link.id} className="text-5xl lg:text-lg">
+        <div key={link.id} className="text-5xl lg:text-lg hover:font-bold">
           <div className="text-left cursor-pointer group">
             <div className="flex items-center">
               <Link href={`/${link.link}`}>

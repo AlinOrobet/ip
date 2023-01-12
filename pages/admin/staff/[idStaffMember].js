@@ -5,10 +5,6 @@ import styles from "../../../styles/Form.module.css";
 import form_validate from "../../../lib/validate";
 import Content from "../../../components/AdminComponents/Content";
 import {useFormik} from "formik";
-const roles = [
-  {id: 1, title: "Antrenor", value: "antrenor"},
-  {id: 2, title: "Preparator", value: "preparator"},
-];
 const staffMember = {
   firstName: "Alin",
   lastName: "Orobet",
@@ -32,10 +28,19 @@ function StaffMember() {
   });
 
   async function onSubmit(values) {}
+  //DELETE
+  const [toDelete, setToDelete] = useState(false);
+  //TODO func remove
   return (
-    <LayoutEditAdmin title={title}>
+    <LayoutEditAdmin title="Administrator">
       <form className="flex flex-col h-screen border-r" onSubmit={formik.handleSubmit}>
-        <Content title={title} styled={"italic"} iconRight={true} link="staff" />
+        <Content
+          title={title}
+          styled={"italic"}
+          iconRight={true}
+          link="admin/staff"
+          setToDelete={setToDelete}
+        />
         <div className="flex-1 overflow-y-auto">
           {/* LAST NAME */}
           <div className="pt-4 px-2">
