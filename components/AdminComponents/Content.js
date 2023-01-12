@@ -18,12 +18,12 @@ function Content({title, iconRight, styled, link}) {
               <AiOutlineClose
                 size={40}
                 className="p-2 hover:bg-gray-200"
-                onClick={() => router.push(`/admin/${link}`)}
+                onClick={() => router.push(`/${link}`)}
               />
             </div>
           ) : (
             <div className="pr-4 space-x-3 text-gray-600 ">
-              <Link href={`/admin/${link}/edit`}>
+              <Link href={`/${link}/edit`}>
                 <GrAdd size={40} className="p-2 hover:bg-gray-200" />
               </Link>
             </div>
